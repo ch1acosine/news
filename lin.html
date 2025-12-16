@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>林彥甫：誤打誤撞的專業</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- 基礎設定 --- */
+        :root {
+            --primary-color: #fdd202; /* 亮黃色 */
+            --accent-black: #222222;  /* 深黑色 */
+            --text-color: #404040;
+            --bg-color: #f9f9f9;
+            --white: #ffffff;
+            --link-color: #555555; 
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans TC', sans-serif; 
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.8;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- 標題字體設定 --- */
+        h1, h2, h3, h4 {
+            font-family: 'Noto Serif TC', serif;
+            color: var(--accent-black);
+        }
+
+        /* --- 版面配置 --- */
+        .main-wrapper { flex: 1; width: 100%; background-color: var(--white); }
+        .container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 250px 1fr; }
+
+        /* --- 左側側邊欄 --- */
+        .sidebar { padding: 40px 20px; border-right: 1px solid #eee; background: #fff; }
+        .sticky-menu { position: sticky; top: 40px; }
+        .toc-title { font-size: 14px; color: #999; margin-bottom: 15px; letter-spacing: 1px; font-weight: bold; }
+        
+        .toc-list { display: flex; flex-direction: column; gap: 8px; }
+        .toc-list a { text-decoration: none; color: var(--link-color); font-size: 15px; padding-left: 10px; border-left: 3px solid transparent; transition: all 0.3s; }
+        .toc-list a:hover { color: var(--accent-black); border-left: 3px solid var(--primary-color); font-weight: bold; }
+        /* 子目錄縮排 */
+        .toc-sub { font-size: 14px; padding-left: 25px !important; margin-top: -5px; color: #888; }
+
+        /* --- 右側主要內容 --- */
+        .main-content { padding: 60px 80px; max-width: 800px; margin: 0 auto; background-color: var(--white); }
+
+        h1 { font-size: 36px; font-weight: 700; margin-bottom: 40px; line-height: 1.4; }
+        /* 對應 # */
+        h2 { font-size: 30px; margin-top: 60px; margin-bottom: 30px; border-bottom: 4px solid var(--primary-color); padding-bottom: 15px; }
+        /* 對應 ## */
+        h3 { font-size: 26px; margin-top: 50px; margin-bottom: 20px; font-weight: bold; color: #333; position: relative; padding-left: 15px; }
+        h3::before { content: ''; position: absolute; left: 0; top: 10%; height: 80%; width: 5px; background-color: var(--primary-color); }
+        /* 對應 ### */
+        h4 { font-size: 20px; margin-top: 30px; margin-bottom: 15px; font-weight: bold; color: #555; }
+        
+        p { font-size: 18px; margin-bottom: 24px; text-align: justify; }
+
+        /* --- 圖片與嵌入 --- */
+        figure { margin: 40px 0; width: 100%; }
+        img { width: 100%; height: auto; display: block; border-radius: 4px; }
+        figcaption { font-size: 14px; color: #666; margin-top: 10px; padding-bottom: 5px; border-bottom: 1px solid #ddd; display: inline-block; }
+
+        /* --- 引用區塊 --- */
+        blockquote { margin: 30px 0; padding: 20px; border-left: 5px solid var(--primary-color); font-size: 20px; font-family: 'Noto Serif TC', serif; font-weight: bold; color: var(--accent-black); line-height: 1.6; background-color: #fffdf0; }
+
+        /* Footer */
+        .site-footer { background-color: var(--accent-black); color: #bbb; padding: 30px 0; text-align: center; margin-top: auto; border-top: 4px solid var(--primary-color); }
+        .designer-name { color: var(--primary-color); font-weight: bold; }
+
+        /* RWD */
+        @media (max-width: 768px) {
+            .container { grid-template-columns: 1fr; }
+            .sidebar { display: none; }
+            .main-content { padding: 30px 20px; }
+            h1 { font-size: 28px; }
+            h2 { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-wrapper">
+        <div class="container">
+            <aside class="sidebar">
+                <div class="sticky-menu">
+                    <div class="toc-title">CHAPTER 2 - 林彥甫</div>
+                    <nav class="toc-list">
+                        <a href="#lin">林彥甫</a>
+                        <a href="#lin-start" class="toc-sub">誤打誤撞的起點</a>
+                        <a href="#lin-dao3" class="toc-sub">公道三的啟示</a>
+                        <a href="#lin-participate" class="toc-sub">看見「專業」的缺席 投入參選</a>
+                        <a href="#lin-value" class="toc-sub">撿起藍綠都不碰的難題</a>
+                        <a href="#lin-conclusion" class="toc-sub">結語</a>
+                    </nav>
+                </div>
+            </aside>
+
+            <article class="main-content">
+                
+                <h1>林彥甫：誤打誤撞的專業</h1>
+                <p style="font-size: 14px; color: #888;">記者／賴昀佳</p>
+                <hr style="border:0; border-top:2px solid var(--primary-color); margin: 20px 0 40px 0; opacity: 0.5;">
+
+                <div id="lin">
+                    <figure>
+                        <img src="story/Lin/Lin_cover.jpeg" onerror="this.src='https://via.placeholder.com/800x450?text=Lin_cover.jpeg'" alt="林彥甫">
+                        <figcaption>翻攝自 林彥甫 臉書。</figcaption>
+                    </figure>
+                    <p>林彥甫，時代力量新竹市議員，同時也是新竹市議會時力黨團總召。他在 2018 年首次參選便以 3571 票當選，2022 年票數成長，拿到了 4926 票，成功連任。</p>
+                    <p>相較於許多帶著熱血與憤慨投身政治的青年，林彥甫加入時力的起點顯得比較偶然。剛從美國拿下公共行政碩士，誤打誤撞進入了政治叢林。</p>
+                    <p>然而，正是這份「冷靜」與「專業」，讓他在喧嘩的政治攻防中，看見了時代力量最無可取代的位置——那個願意彎腰撿起別人眼中「麻煩事」的地方。</p>
+
+                    <h3 id="lin-start">誤打誤撞的起點</h3>
+                    <figure>
+                        <img src="story/Lin/Lin_Chiu2018.jpg" onerror="this.src='https://via.placeholder.com/800x450?text=Lin_Chiu2018.jpg'" alt="林彥甫與邱顯智">
+                        <figcaption>2018時第一次參選的林彥甫與新竹市黨部主委邱顯智。翻攝自 時代力量新竹市黨部 臉書。</figcaption>
+                    </figure>
+                    <blockquote>「坦白說，加入之前我並不是那種『非時代力量不可』的人。」</blockquote>
+                    <p>回憶起 2016 年 10 月加入時力的契機，林彥甫坦承自己當時對這個政黨不甚了解，更談不上狂熱。那時的他剛從美國留學歸國，正處於職涯的探索期。因為昔日清大老師的一句邀約：「有沒有興趣來新竹黨部試試看？」他便抱著試試看的心態，成為了一名黨部的研究助理。</p>
+                    <p>當時的他只隱約覺得，太陽花學運後，台灣社會似乎需要一股有別於藍綠的新可能性。但他沒想到的是，這個「試試看」的決定，讓他遇見了當時的新竹黨部主委邱顯智，也讓他真正見識到所謂的「新政治」長什麼樣子。</p>
+
+                    <h3 id="lin-dao3">「這個案子太複雜了，不要接啦」：公道三的啟示</h3>
+                    <figure>
+                        <img src="story/Lin/Dao3_2020.jpg" onerror="this.src='https://via.placeholder.com/800x450?text=Dao3_2020.jpg'" alt="公道三案">
+                        <figcaption>林彥甫（右）至內政部前抗議公道三案。翻攝自 公民行動影音紀錄資料庫。</figcaption>
+                    </figure>
+                    <p>當時新竹市面臨極具爭議的「公道三」道路徵收案。該案涉及複雜的都市計畫法規、土地徵收條例，還有難解的交通動線規劃。黨部內外的聲音幾乎一面倒地勸阻：「這太複雜了，而且吃力不討好，不要接。」</p>
+                    <p>但看著致力於為弱勢發聲的邱顯智，以及那些求助無門的拆遷戶，當時對政治攻防還很陌生的林彥甫，單純覺得案子在程序正義上似乎有瑕疵，心想：「為什麼不試試看？」</p>
+                    <p>他發揮了在國外所學的公共行政專業，一頭鑽進法條與公文堆裡。然而，當他陪著迫遷戶去內政部開會、去行政院陳情時，他驚訝地發現了一個政治圈的怪現象：在討論如此高度專業的議題時，大多數民意代表的反應卻極其單薄，往往只剩下「支持」、「反對」與「衝啊」的激情喊話。</p>
+                    <blockquote>「原來，『專業』在當前的政治領域裡是如此缺乏。」</blockquote>
+                    <figure>
+                        <img src="story/Lin/Dao3_FB.png" onerror="this.src='https://via.placeholder.com/800x450?text=Dao3_FB.png'" alt="洪箱與林彥甫">
+                        <figcaption>農民女俠「洪箱」、反徵收戶鄭麗雲、新竹市議員林彥甫。翻攝自 林彥甫 臉書。</figcaption>
+                    </figure>
+
+                    <h3 id="lin-participate">看見「專業」的缺席 投入參選</h3>
+                    <p>在黨部當助理不到一年，主任便問了林彥甫有沒有興趣參選議員。</p>
+                    <p>「那時候覺得滿瘋狂的。」林彥甫說，通常大家都是助理歷練許久後，才慢慢討論參選的可能性，但他沒想那麼多，「覺得有機會就試試看好了」。最後，他順利拿下 3,000 多票當選。</p>
+                    <p>雖然第一任議員的任期讓他感到「疲於奔命」，因為要在只有三席議員的劣勢下，透過黨團力量進行專業的議事攻防，但又要應付傳統政治文化中排山倒海的紅白帖與選民服務。</p>
+                    <p>但也正是在這段過程中，他確立了時代力量存在的意義。</p>
+                    <figure>
+                        <img src="story/Lin/Lin_elect_2018.png" onerror="this.src='https://via.placeholder.com/800x450?text=Lin_elect_2018.png'" alt="市場拜票">
+                        <figcaption>林彥甫2018競選時在市場拜票。翻攝自 菜市場政治學。</figcaption>
+                    </figure>
+
+                    <h3 id="lin-value">撿起藍綠都不碰的難題</h3>
+                    <p>時代力量吸引人的價值是什麼？林彥甫的答案很務實，也很沉重。</p>
+                    <blockquote>「會來找時代力量陳情的，通常都是找過藍綠兩黨卻沒有回應，或者是被認為『太困難、太麻煩』而被拒絕的案子。」</blockquote>
+                    <p>在林彥甫眼裡，時代力量必須存在的角色就是幫助這些沒人為他們說話的人。無論是因為議題太過複雜（如公道三案），或是當事人處於權力結構的最底層，甚至是因為議題本身太具爭議性、會掉票（如廢死、性別平權），導致兩大黨為了選舉考量而選擇迴避。</p>
+                    <p>「幫真的需要被服務的人，讓他們覺得有一個政黨或者是民意代表願意陪伴他們」</p>
+                    
+                    <figure>
+                         <img src="story/Lin/IMG_5940.HEIC" onerror="this.src='https://via.placeholder.com/800x450?text=IMG_5940.HEIC (Please convert)'" alt="視訊訪問">
+                        <figcaption>林彥甫接受視訊訪問。</figcaption>
+                    </figure>
+
+                    <h3 id="lin-conclusion">結語</h3>
+                    <p>從一個誤打誤撞的留美碩士，到站在議會質詢台上的議員，林彥甫證明了：小黨的存在，不是為了在藍綠的夾縫中求生存，而是為了確保那些被二元對立所遺忘的聲音，依然有人願意為了他們，翻開厚重的法條、一疊又一疊的公文資料，找出解決的可能。</p>
+                </div>
+                
+                <div style="height: 100px;"></div>
+            </article>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <p>專題設計：<span class="designer-name">賴昀佳</span></p>
+            <p style="margin-top: 10px; font-size: 12px; color: #888;">Copyright © 2025 All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
