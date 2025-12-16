@@ -37,7 +37,6 @@
         }
 
         /* --- 版面配置 (Grid Layout) --- */
-        /* 主要內容區塊撐開高度 */
         .main-wrapper {
             flex: 1; 
             width: 100%;
@@ -48,7 +47,7 @@
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 250px 1fr; /* 左側選單 250px，右側內容自適應 */
+            grid-template-columns: 250px 1fr; 
         }
 
         /* --- 左側側邊欄 (TOC) --- */
@@ -60,7 +59,7 @@
 
         .sticky-menu {
             position: sticky;
-            top: 40px; /* 讓目錄黏在頂端 */
+            top: 40px; 
         }
 
         .toc-title {
@@ -78,11 +77,10 @@
             font-size: 15px;
             margin-bottom: 12px;
             padding-left: 10px;
-            border-left: 3px solid transparent; /* 預留邊框位置 */
+            border-left: 3px solid transparent; 
             transition: all 0.3s;
         }
 
-        /* 滑鼠經過目錄時的變色：文字變黑，左側出現黃線 */
         .toc-list a:hover {
             color: var(--accent-black);
             border-left: 3px solid var(--primary-color);
@@ -92,14 +90,14 @@
         /* --- 右側主要內容 --- */
         .main-content {
             padding: 60px 80px;
-            max-width: 800px; /* 限制文章寬度以利閱讀 */
+            max-width: 800px; 
             margin: 0 auto;
             background-color: var(--white);
         }
 
         /* --- 標題樣式 --- */
         h1 {
-            font-family: 'Noto Serif TC', serif; /* 大標題用襯線體 */
+            font-family: 'Noto Serif TC', serif; 
             font-size: 36px;
             font-weight: 700;
             color: var(--accent-black);
@@ -112,7 +110,6 @@
             margin-top: 50px;
             margin-bottom: 20px;
             color: var(--accent-black);
-            /* 標題下方改用粗黃線強調 */
             border-bottom: 3px solid var(--primary-color); 
             padding-bottom: 10px;
         }
@@ -123,11 +120,10 @@
             color: var(--accent-black);
         }
 
-        /* --- 內文樣式 --- */
         p {
             font-size: 18px;
             margin-bottom: 24px;
-            text-align: justify; /* 左右對齊 */
+            text-align: justify; 
         }
 
         /* --- 圖片與嵌入樣式 --- */
@@ -142,7 +138,6 @@
             display: block;
         }
 
-        /* Flourish 嵌入容器修正 */
         .flourish-embed {
             width: 100% !important;
         }
@@ -152,35 +147,125 @@
             color: #666;
             margin-top: 15px;
             padding-bottom: 8px;
-            /* 圖說下方使用細黃線 */
             border-bottom: 2px solid var(--primary-color); 
             display: inline-block;
             font-weight: 500;
         }
 
-        /* --- 引用區塊 (Blockquote) --- */
+        /* --- 引用區塊 --- */
         blockquote {
             margin: 30px 0;
             padding-left: 20px;
-            /* 左側改為粗黃線 */
             border-left: 5px solid var(--primary-color); 
-            font-size: 22px; /* 稍微加大 */
+            font-size: 22px; 
             font-family: 'Noto Serif TC', serif;
             font-weight: bold;
             color: var(--accent-black);
             line-height: 1.6;
-            background-color: #fffdf0; /* 極淡的黃色背景增加層次 */
+            background-color: #fffdf0; 
             padding: 20px;
         }
 
-        /* --- Footer 樣式 (新增) --- */
+        /* --- 手機動畫區塊樣式 (新增) --- */
+        .phone-section-container {
+            background-color: #f9f9f9;
+            padding: 60px 0;
+            margin: 40px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border-radius: 10px;
+        }
+
+        .phone-frame {
+            width: 320px;
+            height: 580px;
+            background-color: #fff;
+            border: 12px solid #333;
+            border-radius: 40px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        .phone-notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 25px;
+            background-color: #333;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            z-index: 10;
+        }
+
+        .screen-content {
+            padding: 80px 20px 20px 20px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            background-color: #f5f5f5;
+            overflow-y: hidden; 
+        }
+
+        .msg-bubble {
+            padding: 12px 18px;
+            margin-bottom: 15px;
+            border-radius: 20px;
+            font-size: 15px;
+            line-height: 1.5;
+            max-width: 85%;
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: popUp 0.5s ease forwards;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .msg-left {
+            align-self: flex-start;
+            background-color: #ffffff;
+            color: #444;
+            border-bottom-left-radius: 5px;
+        }
+
+        .msg-right {
+            align-self: flex-end;
+            background-color: var(--primary-color);
+            color: #000;
+            border-bottom-right-radius: 5px;
+            font-weight: bold;
+        }
+
+        .delay-1 { animation-delay: 0.5s; }
+        .delay-2 { animation-delay: 1.5s; }
+        .delay-3 { animation-delay: 2.5s; }
+        .delay-4 { animation-delay: 3.5s; }
+        .delay-5 { animation-delay: 4.5s; }
+
+        @keyframes popUp {
+            0% { opacity: 0; transform: translateY(20px) scale(0.9); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .phone-caption {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+            text-align: center;
+        }
+
+        /* --- Footer 樣式 --- */
         .site-footer {
             background-color: var(--accent-black);
             color: #bbb;
             padding: 30px 0;
             text-align: center;
-            margin-top: auto; /* 確保 footer 在最底部 */
-            border-top: 4px solid var(--primary-color); /* 頂部黃色裝飾線 */
+            margin-top: auto;
+            border-top: 4px solid var(--primary-color);
         }
 
         .site-footer p {
@@ -194,14 +279,13 @@
             font-weight: bold;
         }
 
-
         /* --- 手機版適配 (RWD) --- */
         @media (max-width: 768px) {
             .container {
-                grid-template-columns: 1fr; /* 手機變單欄 */
+                grid-template-columns: 1fr;
             }
             .sidebar {
-                display: none; /* 手機版隱藏側邊欄 */
+                display: none;
             }
             .main-content {
                 padding: 30px 20px;
@@ -212,6 +296,10 @@
             blockquote {
                 font-size: 18px;
                 padding: 15px;
+            }
+            .phone-frame {
+                width: 280px; /* 手機版將手機縮小一點以防破版 */
+                height: 500px;
             }
         }
     </style>
@@ -275,6 +363,31 @@
                     <p>吳欣岱在接受訪問時回顧上半年選戰策略的討論，她指出過程中幹部們並沒有太多衝突，大家很快達成共識。</p>
                 </div>
 
+                <div class="phone-section-container">
+                    <div class="phone-frame">
+                        <div class="phone-notch"></div>
+                        <div class="screen-content">
+                            <div class="msg-bubble msg-left delay-1">
+                                這次政黨票真的好難選...大家都怎麼投？🤔
+                            </div>
+                            <div class="msg-bubble msg-right delay-2">
+                                真的很不想投給藍綠兩大黨欸
+                            </div>
+                            <div class="msg-bubble msg-left delay-3">
+                                可是小黨感覺都快泡沫化了，投了會不會變廢票？
+                            </div>
+                            <div class="msg-bubble msg-right delay-4">
+                                但如果大家都不支持，多元的聲音就真的消失了！
+                            </div>
+                            <div class="msg-bubble msg-left delay-5">
+                                也是... 還是希望能有強力的第三勢力監督國會 🔥
+                            </div>
+                        </div>
+                    </div>
+                    <div class="phone-caption">
+                        ▲ 選戰倒數，網路社群對於小黨生存與投票意向的熱烈討論。
+                    </div>
+                </div>
                 <div id="section4">
                     <h2>親民黨：宋楚瑜在改變，台灣需要煞車者</h2>
                     <p>新興小黨載浮載沉，老牌政黨親民黨同樣面臨生存危機。不同的是，親民黨曾經叱咤風雲，2001年創黨後首次投入國會選舉中就獲得46席立委。</p>
