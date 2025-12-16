@@ -31,31 +31,25 @@
             min-height: 100vh;
         }
 
-        /* --- 標題字體設定 --- */
         h1, h2, h3 {
             font-family: 'Noto Serif TC', serif;
             color: var(--accent-black);
         }
 
-        /* --- 版面配置 --- */
         .main-wrapper { flex: 1; width: 100%; background-color: var(--white); }
         .container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 250px 1fr; }
 
-        /* --- 左側側邊欄 --- */
         .sidebar { padding: 40px 20px; border-right: 1px solid #eee; background: #fff; height: 100vh; position: sticky; top: 0; overflow-y: auto; }
         .sticky-menu { position: sticky; top: 40px; }
         .toc-title { font-size: 14px; color: #999; margin-bottom: 15px; letter-spacing: 1px; font-weight: bold; }
-        
         .toc-list { display: flex; flex-direction: column; gap: 12px; }
         .toc-list a { text-decoration: none; color: var(--link-color); font-size: 15px; padding-left: 10px; border-left: 3px solid transparent; transition: all 0.3s; }
         .toc-list a:hover { color: var(--accent-black); border-left: 3px solid var(--primary-color); font-weight: bold; }
 
-        /* --- 右側主要內容 --- */
         .main-content { padding: 60px 80px; max-width: 800px; margin: 0 auto; background-color: var(--white); }
 
         h1 { font-size: 36px; font-weight: 700; margin-bottom: 40px; line-height: 1.4; border-bottom: 1px solid #eee; padding-bottom: 20px; }
         
-        /* H2: 主要標題 (對應 #) */
         h2 { 
             font-size: 30px; 
             margin-top: 80px; 
@@ -65,7 +59,6 @@
             line-height: 1.3;
         }
 
-        /* H3: 次要標題 (對應 ##) */
         h3 { 
             font-size: 24px; 
             margin-top: 50px; 
@@ -78,53 +71,75 @@
 
         p { font-size: 18px; margin-bottom: 24px; text-align: justify; }
 
-        /* --- 圖片與嵌入 --- */
         figure { margin: 40px 0; width: 100%; }
         img { width: 100%; height: auto; display: block; border-radius: 4px; }
         figcaption { font-size: 14px; color: #666; margin-top: 10px; padding-bottom: 5px; border-bottom: 1px solid #ddd; display: inline-block; }
 
-        /* --- 引用區塊 --- */
-        blockquote { margin: 30px 0; padding: 20px 30px; border-left: 5px solid var(--primary-color); background-color: #fffdf0; font-size: 20px; font-family: 'Noto Serif TC', serif; font-weight: bold; color: var(--accent-black); }
+        /* --- 引用區塊 (Quote) --- */
+        blockquote { 
+            margin: 40px 0; 
+            padding: 25px 30px; 
+            border-left: 5px solid var(--primary-color); 
+            background-color: #fffdf0; /* 淡黃色背景 */
+            font-size: 21px; 
+            font-family: 'Noto Serif TC', serif; 
+            font-weight: bold; 
+            color: var(--accent-black); 
+            line-height: 1.6;
+        }
 
-        /* --- 手機留言動畫區塊 --- */
+        /* --- 手機留言動畫區塊 (修正版) --- */
         .phone-comment-section {
-            background-color: #f0f2f5;
-            border-radius: 20px;
-            padding: 40px 20px;
+            /* 移除原本的灰色背景，改成透明或與主背景融合 */
+            background-color: transparent; 
+            padding: 40px 0;
             margin: 40px 0;
             display: flex;
             justify-content: center;
-            overflow: hidden;
         }
 
         .phone-frame {
-            width: 300px;
-            height: 500px;
+            width: 320px;       /* 正常手機寬度 */
+            height: 640px;      /* 正常手機比例 9:18 */
             background-color: #fff;
-            border: 8px solid #333;
-            border-radius: 30px;
+            border: 10px solid #222; /* 手機邊框 */
+            border-radius: 40px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        /* 瀏海 */
+        .phone-notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 25px;
+            background-color: #222;
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+            z-index: 10;
         }
 
         .comment-container {
-            padding: 40px 15px 15px;
+            padding: 50px 15px 15px; /* 上方留白避開瀏海 */
             display: flex;
             flex-direction: column;
             gap: 15px;
             height: 100%;
-            overflow-y: auto; /* 允許滾動 */
-            background-color: #fff;
+            background-color: #f5f5f5; /* 聊天室背景色 */
+            overflow-y: hidden; 
         }
         
         .comment-bubble {
-            padding: 10px 15px;
+            padding: 12px 16px;
             border-radius: 18px;
-            font-size: 14px;
+            font-size: 15px;
             line-height: 1.4;
             max-width: 85%;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
             opacity: 0;
             transform: translateY(20px);
             animation: popUp 0.5s ease forwards;
@@ -132,19 +147,11 @@
 
         .comment-left {
             align-self: flex-start;
-            background-color: #e4e6eb;
+            background-color: #ffffff;
             color: #050505;
             border-bottom-left-radius: 4px;
         }
         
-        .comment-right {
-            align-self: flex-end;
-            background-color: var(--primary-color);
-            color: #000;
-            border-bottom-right-radius: 4px;
-            font-weight: bold;
-        }
-
         .delay-1 { animation-delay: 0.5s; }
         .delay-2 { animation-delay: 1.5s; }
         .delay-3 { animation-delay: 2.5s; }
@@ -171,7 +178,7 @@
             bottom: 5px;
             left: 50%;
             transform: translateX(-50%);
-            width: 120px;
+            width: 160px;
             height: 15px;
             background-color: var(--primary-color);
             z-index: -1;
@@ -181,7 +188,7 @@
         /* --- 新聞堆疊動畫 --- */
         .news-stack-container {
             position: relative;
-            height: 300px; /* 預留高度給圖片堆疊 */
+            height: 300px;
             margin: 40px 0;
             display: flex;
             justify-content: center;
@@ -199,16 +206,11 @@
             transform: translateY(50px) scale(0.9);
         }
 
-        /* 用於觸發動畫的 class */
-        .news-card.show {
-            opacity: 1;
-        }
+        .news-card.show { opacity: 1; }
         
-        /* 堆疊層次 */
         .news-1.show { transform: translateY(0) scale(1) rotate(-3deg); z-index: 1; }
         .news-2.show { transform: translateY(20px) scale(1) rotate(2deg); z-index: 2; transition-delay: 0.3s; }
         .news-3.show { transform: translateY(40px) scale(1) rotate(-1deg); z-index: 3; transition-delay: 0.6s; }
-
 
         /* --- 結語框框 --- */
         .conclusion-box {
@@ -272,11 +274,9 @@
         
         .netflix-card:hover img { filter: brightness(1.1); }
 
-        /* Footer */
         .site-footer { background-color: var(--accent-black); color: #bbb; padding: 30px 0; text-align: center; margin-top: auto; border-top: 4px solid var(--primary-color); }
         .designer-name { color: var(--primary-color); font-weight: bold; }
 
-        /* RWD */
         @media (max-width: 768px) {
             .container { grid-template-columns: 1fr; }
             .sidebar { display: none; }
@@ -295,12 +295,13 @@
                 <div class="sticky-menu">
                     <div class="toc-title">專題導覽</div>
                     <nav class="toc-list">
+                        <a href="#join-reason">為什麼選擇加入時代力量？</a>
+                        <a href="#stories">人物故事</a>
                         <a href="#voices">網路的聲音？</a>
                         <a href="#confrontation">直球對決藍白粉</a>
                         <a href="#green-anxiety">直球對決綠營焦慮</a>
                         <a href="#hsinchu-lab">新竹實驗室</a>
                         <a href="#third-way">預算審查的第三條路</a>
-                        <a href="#join-reason">為什麼選擇加入時代力量？</a>
                     </nav>
                 </div>
             </aside>
@@ -311,11 +312,40 @@
                 <p style="font-size: 14px; color: #888;">記者／賴昀佳</p>
                 <hr style="border:0; border-top:2px solid var(--primary-color); margin: 20px 0 40px 0; opacity: 0.5;">
 
+                <div id="join-reason">
+                    <h2>他們為什麼選擇加入時代力量？</h2>
+                    <figure>
+                        <img src="story/WangInt_LinLiaoBack.jpg" onerror="this.src='https://via.placeholder.com/800x450?text=WangInt_LinLiaoBack.jpg'" alt="時代力量">
+                        <figcaption>翻攝自 時代力量 官網。</figcaption>
+                    </figure>
+                </div>
+
+                <div id="stories">
+                    <h3 style="margin-top: 40px; margin-bottom: 20px; color: #666; font-size: 18px; border:none;">點擊人物閱讀故事：</h3>
+                    
+                    <div class="netflix-container">
+                        <a href="wang.html" class="netflix-card">
+                            <img src="NF/Wang_NF.png" onerror="this.src='https://via.placeholder.com/300x450?text=Wang_NF.png'" alt="王婉諭的故事">
+                        </a>
+
+                        <a href="liao.html" class="netflix-card">
+                            <img src="NF/Liao_NF.png" onerror="this.src='https://via.placeholder.com/300x450?text=Liao_NF.png'" alt="廖啟帆的故事">
+                        </a>
+
+                        <a href="lin.html" class="netflix-card">
+                            <img src="NF/Lin_NF.png" onerror="this.src='https://via.placeholder.com/300x450?text=Lin_NF.png'" alt="林彥甫的故事">
+                        </a>
+                    </div>
+                </div>
+
+                <hr style="border:0; border-top:1px solid #eee; margin: 80px 0;">
+
                 <div id="voices">
                     <h2>網路的聲音？</h2>
                     
                     <div class="phone-comment-section">
                         <div class="phone-frame">
+                            <div class="phone-notch"></div>
                             <div class="comment-container">
                                 <div class="comment-bubble comment-left delay-1">
                                     對國民黨的毀憲亂政不聞不問、輕輕放下，對民進黨的發言反應迅速、無限上綱。🙄
@@ -399,45 +429,20 @@
                     <p>這種「不站隊」的代價，是在藍綠的對抗中顯得格格不入。</p>
                     
                     <div class="news-stack-container" id="news-animation-trigger">
-                        <img src="Internet/Hsinchu_news/News_hsin1.jpg" onerror="this.src='https://via.placeholder.com/400x300?text=News_1'" class="news-card news-1" alt="新聞1">
-                        <img src="Internet/Hsinchu_news/News_hsin2.jpg" onerror="this.src='https://via.placeholder.com/400x300?text=News_2'" class="news-card news-2" alt="新聞2">
-                        <img src="Internet/Hsinchu_news/News_hsin3.jpg" onerror="this.src='https://via.placeholder.com/400x300?text=News_3'" class="news-card news-3" alt="新聞3">
+                        <img src="Internet/Hsinchu_news/News_hsin1.png" onerror="this.src='https://via.placeholder.com/400x300?text=News_1'" class="news-card news-1" alt="新聞1">
+                        <img src="Internet/Hsinchu_news/News_hsin2.png" onerror="this.src='https://via.placeholder.com/400x300?text=News_2'" class="news-card news-2" alt="新聞2">
+                        <img src="Internet/Hsinchu_news/News_hsin3.png" onerror="this.src='https://via.placeholder.com/400x300?text=News_3'" class="news-card news-3" alt="新聞3">
                     </div>
 
                     <p>以近期的預算案爭議為例：民進黨團選擇佔領主席台，進行高強度的杯葛；藍白陣營則試圖仗著人數優勢，包裹表決強渡關山。</p>
                     <p>在兩極對立下，時代力量選擇對兩邊都提出有疑慮的地方：既批判民進黨在協商到一半時就癱瘓議事，讓實質審查流產、同時也猛烈抨擊藍白迴避監督的多數暴力。</p>
-                    <p>「網路上會罵我們冷眼旁觀、罵我們沒去幫忙架開藍白議員，好像沒打架就沒在做事。」林彥甫無奈卻堅定地說，時代力量在議會建立了「專業問政」的品牌，他們覺得議員的工作不是演戲給網友看、賺取網路聲量，而是將預算書攤開，一筆一筆檢視不合理之處。</p>
+                    
+                    <blockquote>「網路上會罵我們冷眼旁觀、罵我們沒去幫忙架開藍白議員，好像沒打架就沒在做事。」</blockquote>
+                    
+                    <p>林彥甫無奈卻堅定地說，時代力量在議會建立了「專業問政」的品牌，他們覺得議員的工作不是演戲給網友看、賺取網路聲量，而是將預算書攤開，一筆一筆檢視不合理之處。</p>
                     
                     <div class="conclusion-box">
                         <p>面對網路上的兩極攻訐，時代力量試圖證明：在藍綠的激情對決之外，台灣政壇還需要一個「不看顏色，只看是非」的理性聲音，即便這個聲音，註定是孤獨的。</p>
-                    </div>
-                </div>
-
-                <hr style="border:0; border-top:1px solid #eee; margin: 60px 0;">
-
-                <div id="join-reason">
-                    <h2>他們為什麼選擇加入時代力量？</h2>
-                    <figure>
-                        <img src="story/WangInt_LinLiaoBack.jpg" onerror="this.src='https://via.placeholder.com/800x450?text=WangInt_LinLiaoBack.jpg'" alt="時代力量">
-                        <figcaption>翻攝自 時代力量 官網。</figcaption>
-                    </figure>
-                </div>
-
-                <div id="stories">
-                    <h3 style="margin-top: 40px; margin-bottom: 20px; color: #666; font-size: 18px; border:none;">點擊人物閱讀故事：</h3>
-                    
-                    <div class="netflix-container">
-                        <a href="wang.html" class="netflix-card">
-                            <img src="NF/Wang_NF.png" onerror="this.src='https://via.placeholder.com/300x450?text=Wang_NF.png'" alt="王婉諭的故事">
-                        </a>
-
-                        <a href="liao.html" class="netflix-card">
-                            <img src="NF/Liao_NF.png" onerror="this.src='https://via.placeholder.com/300x450?text=Liao_NF.png'" alt="廖啟帆的故事">
-                        </a>
-
-                        <a href="lin.html" class="netflix-card">
-                            <img src="NF/Lin_NF.png" onerror="this.src='https://via.placeholder.com/300x450?text=Lin_NF.png'" alt="林彥甫的故事">
-                        </a>
                     </div>
                 </div>
 
