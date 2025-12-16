@@ -42,27 +42,206 @@
         .container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 250px 1fr; }
 
         /* --- 左側側邊欄 --- */
-        .sidebar { padding: 40px 20px; border-right: 1px solid #eee; background: #fff; height: 100vh; position: sticky; top: 0; }
+        .sidebar { padding: 40px 20px; border-right: 1px solid #eee; background: #fff; height: 100vh; position: sticky; top: 0; overflow-y: auto; }
         .sticky-menu { position: sticky; top: 40px; }
         .toc-title { font-size: 14px; color: #999; margin-bottom: 15px; letter-spacing: 1px; font-weight: bold; }
-        .toc-list a { display: block; text-decoration: none; color: var(--link-color); font-size: 15px; margin-bottom: 12px; padding-left: 10px; border-left: 3px solid transparent; transition: all 0.3s; }
+        
+        .toc-list { display: flex; flex-direction: column; gap: 12px; }
+        .toc-list a { text-decoration: none; color: var(--link-color); font-size: 15px; padding-left: 10px; border-left: 3px solid transparent; transition: all 0.3s; }
         .toc-list a:hover { color: var(--accent-black); border-left: 3px solid var(--primary-color); font-weight: bold; }
 
         /* --- 右側主要內容 --- */
         .main-content { padding: 60px 80px; max-width: 800px; margin: 0 auto; background-color: var(--white); }
 
-        h1 { font-size: 36px; font-weight: 700; margin-bottom: 40px; line-height: 1.4; }
-        h2 { font-size: 28px; margin-top: 60px; margin-bottom: 30px; border-bottom: 4px solid var(--primary-color); padding-bottom: 15px; }
+        h1 { font-size: 36px; font-weight: 700; margin-bottom: 40px; line-height: 1.4; border-bottom: 1px solid #eee; padding-bottom: 20px; }
         
-        /* --- 圖片樣式 --- */
+        /* H2: 主要標題 (對應 #) */
+        h2 { 
+            font-size: 30px; 
+            margin-top: 80px; 
+            margin-bottom: 30px; 
+            padding-left: 15px; 
+            border-left: 8px solid var(--primary-color); 
+            line-height: 1.3;
+        }
+
+        /* H3: 次要標題 (對應 ##) */
+        h3 { 
+            font-size: 24px; 
+            margin-top: 50px; 
+            margin-bottom: 20px; 
+            font-weight: bold; 
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 8px;
+            display: inline-block;
+        }
+
+        p { font-size: 18px; margin-bottom: 24px; text-align: justify; }
+
+        /* --- 圖片與嵌入 --- */
         figure { margin: 40px 0; width: 100%; }
         img { width: 100%; height: auto; display: block; border-radius: 4px; }
         figcaption { font-size: 14px; color: #666; margin-top: 10px; padding-bottom: 5px; border-bottom: 1px solid #ddd; display: inline-block; }
 
-        /* --- Netflix 風格選擇區塊 (新增) --- */
+        /* --- 引用區塊 --- */
+        blockquote { margin: 30px 0; padding: 20px 30px; border-left: 5px solid var(--primary-color); background-color: #fffdf0; font-size: 20px; font-family: 'Noto Serif TC', serif; font-weight: bold; color: var(--accent-black); }
+
+        /* --- 手機留言動畫區塊 --- */
+        .phone-comment-section {
+            background-color: #f0f2f5;
+            border-radius: 20px;
+            padding: 40px 20px;
+            margin: 40px 0;
+            display: flex;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .phone-frame {
+            width: 300px;
+            height: 500px;
+            background-color: #fff;
+            border: 8px solid #333;
+            border-radius: 30px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .comment-container {
+            padding: 40px 15px 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            height: 100%;
+            overflow-y: auto; /* 允許滾動 */
+            background-color: #fff;
+        }
+        
+        .comment-bubble {
+            padding: 10px 15px;
+            border-radius: 18px;
+            font-size: 14px;
+            line-height: 1.4;
+            max-width: 85%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: popUp 0.5s ease forwards;
+        }
+
+        .comment-left {
+            align-self: flex-start;
+            background-color: #e4e6eb;
+            color: #050505;
+            border-bottom-left-radius: 4px;
+        }
+        
+        .comment-right {
+            align-self: flex-end;
+            background-color: var(--primary-color);
+            color: #000;
+            border-bottom-right-radius: 4px;
+            font-weight: bold;
+        }
+
+        .delay-1 { animation-delay: 0.5s; }
+        .delay-2 { animation-delay: 1.5s; }
+        .delay-3 { animation-delay: 2.5s; }
+        .delay-4 { animation-delay: 3.5s; }
+        .delay-5 { animation-delay: 4.5s; }
+
+        @keyframes popUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- BIG TEXT --- */
+        .big-text {
+            font-size: 32px;
+            font-weight: 900;
+            text-align: center;
+            margin: 60px 0;
+            color: var(--accent-black);
+            position: relative;
+            z-index: 1;
+        }
+        .big-text::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 15px;
+            background-color: var(--primary-color);
+            z-index: -1;
+            opacity: 0.6;
+        }
+
+        /* --- 新聞堆疊動畫 --- */
+        .news-stack-container {
+            position: relative;
+            height: 300px; /* 預留高度給圖片堆疊 */
+            margin: 40px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .news-card {
+            position: absolute;
+            width: 80%;
+            max-width: 400px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.5s ease;
+            opacity: 0;
+            transform: translateY(50px) scale(0.9);
+        }
+
+        /* 用於觸發動畫的 class */
+        .news-card.show {
+            opacity: 1;
+        }
+        
+        /* 堆疊層次 */
+        .news-1.show { transform: translateY(0) scale(1) rotate(-3deg); z-index: 1; }
+        .news-2.show { transform: translateY(20px) scale(1) rotate(2deg); z-index: 2; transition-delay: 0.3s; }
+        .news-3.show { transform: translateY(40px) scale(1) rotate(-1deg); z-index: 3; transition-delay: 0.6s; }
+
+
+        /* --- 結語框框 --- */
+        .conclusion-box {
+            margin-top: 60px;
+            padding: 40px;
+            background-color: #222; 
+            color: #fff; 
+            border-radius: 8px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .conclusion-box p {
+            font-size: 19px;
+            line-height: 1.8;
+            margin-bottom: 0;
+            color: #eee;
+        }
+        .conclusion-box::before {
+            content: "”";
+            position: absolute;
+            top: -20px;
+            right: 30px;
+            font-size: 120px;
+            color: rgba(253, 210, 2, 0.15);
+            font-family: serif;
+            line-height: 1;
+        }
+
+        /* --- Netflix 風格選擇區塊 --- */
         .netflix-container {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* 三欄並排 */
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
             margin-top: 40px;
         }
@@ -81,22 +260,18 @@
             height: 100%;
             object-fit: cover;
             display: block;
-            /* 預設稍微暗一點，滑鼠移上去變亮 */
             filter: brightness(0.9);
             transition: filter 0.3s ease;
         }
 
-        /* Hover 效果：放大 + 變亮 + 陰影加深 */
         .netflix-card:hover {
             transform: scale(1.05);
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-            z-index: 10; /* 確保放大的卡片在最上層 */
+            z-index: 10;
         }
         
-        .netflix-card:hover img {
-            filter: brightness(1.1);
-        }
-        
+        .netflix-card:hover img { filter: brightness(1.1); }
+
         /* Footer */
         .site-footer { background-color: var(--accent-black); color: #bbb; padding: 30px 0; text-align: center; margin-top: auto; border-top: 4px solid var(--primary-color); }
         .designer-name { color: var(--primary-color); font-weight: bold; }
@@ -107,8 +282,8 @@
             .sidebar { display: none; }
             .main-content { padding: 30px 20px; }
             h1 { font-size: 28px; }
-            /* 手機版改成單欄堆疊 */
             .netflix-container { grid-template-columns: 1fr; gap: 30px; }
+            .news-stack-container { height: 250px; }
         }
     </style>
 </head>
@@ -120,11 +295,12 @@
                 <div class="sticky-menu">
                     <div class="toc-title">專題導覽</div>
                     <nav class="toc-list">
-                        <a href="#intro">前言：為什麼加入？</a>
-                        <a href="#stories">人物故事</a>
-                        <a href="wang.html" style="padding-left: 20px; font-size: 14px;">- 王婉諭</a>
-                        <a href="liao.html" style="padding-left: 20px; font-size: 14px;">- 廖啟帆</a>
-                        <a href="lin.html" style="padding-left: 20px; font-size: 14px;">- 林彥甫</a>
+                        <a href="#voices">網路的聲音？</a>
+                        <a href="#confrontation">直球對決藍白粉</a>
+                        <a href="#green-anxiety">直球對決綠營焦慮</a>
+                        <a href="#hsinchu-lab">新竹實驗室</a>
+                        <a href="#third-way">預算審查的第三條路</a>
+                        <a href="#join-reason">為什麼選擇加入時代力量？</a>
                     </nav>
                 </div>
             </aside>
@@ -135,7 +311,111 @@
                 <p style="font-size: 14px; color: #888;">記者／賴昀佳</p>
                 <hr style="border:0; border-top:2px solid var(--primary-color); margin: 20px 0 40px 0; opacity: 0.5;">
 
-                <div id="intro">
+                <div id="voices">
+                    <h2>網路的聲音？</h2>
+                    
+                    <div class="phone-comment-section">
+                        <div class="phone-frame">
+                            <div class="comment-container">
+                                <div class="comment-bubble comment-left delay-1">
+                                    對國民黨的毀憲亂政不聞不問、輕輕放下，對民進黨的發言反應迅速、無限上綱。🙄
+                                </div>
+                                <div class="comment-bubble comment-left delay-2">
+                                    罷免時力綠營側翼 👎
+                                </div>
+                                <div class="comment-bubble comment-left delay-3">
+                                    早點去投奔其他陣營吧！
+                                </div>
+                                <div class="comment-bubble comment-left delay-4">
+                                    哇 幫執政黨監督在野黨的在野黨 厲害了👍
+                                </div>
+                                <div class="comment-bubble comment-left delay-5">
+                                    背刺黨又來了...
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p>時代力量扮演的角色，一直處於四面挨打的情境。</p>
+                    <p>支持大罷免的貼文下，「小綠」這個稱號早已見怪不怪，諷刺的是另一邊在Threads上的風向是「王婉諭挺罷免的原因是想要卡補選的位置」。</p>
+                    <p>有人認為他們是拖著民進黨的後腿，也有人認為他們就是民進黨的側翼。</p>
+                    
+                    <div class="big-text">時代力量自己呢，怎麼看？</div>
+                </div>
+
+                <div id="confrontation">
+                    <h3>直球對決藍白粉：有權力的人，就該被監督</h3>
+                    <figure>
+                        <img src="Internet/recall_Fu.jpg" onerror="this.src='https://via.placeholder.com/800x450?text=recall_Fu.jpg'" alt="罷免傅崐萁">
+                        <figcaption>時代力量前往花蓮宣傳罷免國民黨立委傅崐萁。翻攝自 王婉諭 臉書。</figcaption>
+                    </figure>
+                    <p>2023 年 716 公平正義大遊行，當王婉諭在凱道上，對著台下滿滿的柯文哲支持者批評民眾黨社子島爭議時，噓聲四起，網路上更充斥著「作秀」、「小綠」的謾罵，質疑時力為何在野黨的場子罵在野黨。2024的青鳥運動、2025的大罷免，時代力量也投身其中，身上的小綠罵名堆的比山還高。</p>
+                    
+                    <figure>
+                         <img src="Internet/IMG_5290.png" onerror="this.src='https://via.placeholder.com/800x450?text=IMG_5290.png'" alt="採訪畫面">
+                    </figure>
+
+                    <p>「有權力的人應該都要被監督，這包括了執政黨，也包括了握有聲量的各黨主席與民意代表。」王婉諭的回應相當堅定。她認為，監督不該有顏色之分，民意代表背負著公民的權利，無論是藍綠白，只要掌握權力或話語權，就必須可受公評。</p>
+                </div>
+
+                <div id="green-anxiety">
+                    <h3>直球對決綠營焦慮：我們不是來分票，是來守護被遺落的價值</h3>
+                    <p>「小黨就是來分票的，讓國民黨漁翁得利。」這是每逢大選，泛綠選民對時代力量最嚴厲、卻也最常見的指控。</p>
+                    <p>廖啟帆則提出了一套冷靜的政治觀察。他認為，隨著民進黨邁向長期執政，為了維持政權穩定與擴大票源，勢必會從激進走向中庸路線，甚至在某些議題上選擇妥協。「當大黨為了執政不得不往中間靠攏時，那些被遺落的進步價值、少數人的聲音，誰來接住？」</p>
+                    <p>廖啟帆直言，小黨的戰略目標其實不是跟民進黨搶食鐵桿深綠選票，而是鎖定「非台派」或是「對民進黨失望」的中間選民。</p>
+                    
+                    <figure>
+                        <img src="Internet/IMG_5301.png" onerror="this.src='https://via.placeholder.com/800x450?text=IMG_5301.png'" alt="採訪畫面">
+                    </figure>
+
+                    <p>「如果為了護台，就必須無視執政黨違反價值的行為，那才是真正的危險。」他強調，四黨聯盟的分工正是為了填補這個真空：基進守護主權、時力專注交通與兒少、小歐盟推動教育。這不是為了對抗民進黨，而是為了在民進黨無法、或不願衝撞的領域，繼續撐出改革的空間。</p>
+                </div>
+
+                <div id="hsinchu-lab">
+                    <h3>新竹實驗室：在民眾黨執政下，示範「不看顏色的監督」</h3>
+                    <p>如果說中央層級的路線之爭是價值觀的對決，那麼在新竹市議會的戰場，則是一場直接面對在地民意的殘酷考驗。</p>
+                    
+                    <figure>
+                        <img src="Internet/Hsinchu_3.jpg" onerror="this.src='https://via.placeholder.com/800x450?text=Hsinchu_3.jpg'" alt="新竹市議員">
+                        <figcaption>時力新竹市議員廖子齊（左）、林彥甫（中）、蔡惠婷（右）對新竹市《休閒娛樂事業管理自治條例》呼籲「稽查要入法，罰則要明定」。翻攝自 蔡惠婷新竹市議員 臉書。</figcaption>
+                    </figure>
+
+                    <p>身處全台唯一由民眾黨執政的縣市，三位時代力量議員的處境極為微妙。綠營支持者常質疑：為何時力議員出席高虹安市府的開工典禮？為何對民眾黨的砲火不如過去對林智堅時期猛烈？甚至懷疑時力是否為了生存而與民眾黨「眉來眼去」。</p>
+                    
+                    <blockquote>「在地方選舉，八成的民眾不在乎你是什麼黨，只在乎你有沒有爭取到東西、對我的生活有影響。」</blockquote>
+
+                    <p>林彥甫一語道破地方政治的本質。他解釋，這不是被收編，而是政治現實下的槓桿選擇。</p>
+
+                    <figure>
+                        <img src="Internet/new_park.jpg" onerror="this.src='https://via.placeholder.com/800x450?text=new_park.jpg'" alt="公園剪綵">
+                        <figcaption>公園啟用剪綵，多黨議員出席。時代力量議員蔡惠婷（左四）、新竹市代理市長邱臣遠（中）。翻攝自 新竹市政府城市行銷處。</figcaption>
+                    </figure>
+
+                    <p>他分析，現在的民眾黨市府對議員的建議採納度較高，而且在面對民眾第一線不是看你的黨籍就決定一切的時候，「到底對我生活有什麼好處」勢必要靠著議會和市府間的來回合作。林彥甫坦言，雙方確實形成了一種「建設性監督」的默契，時力會批評、給予專業的制度建議，民眾黨市府也會比較願意採納。</p>
+                </div>
+
+                <div id="third-way">
+                    <h3>預算審查的第三條路：拒絕表演式對抗</h3>
+                    <p>這種「不站隊」的代價，是在藍綠的對抗中顯得格格不入。</p>
+                    
+                    <div class="news-stack-container" id="news-animation-trigger">
+                        <img src="Internet/Hsinchu_news/News_hsin1.jpg" onerror="this.src='https://via.placeholder.com/400x300?text=News_1'" class="news-card news-1" alt="新聞1">
+                        <img src="Internet/Hsinchu_news/News_hsin2.jpg" onerror="this.src='https://via.placeholder.com/400x300?text=News_2'" class="news-card news-2" alt="新聞2">
+                        <img src="Internet/Hsinchu_news/News_hsin3.jpg" onerror="this.src='https://via.placeholder.com/400x300?text=News_3'" class="news-card news-3" alt="新聞3">
+                    </div>
+
+                    <p>以近期的預算案爭議為例：民進黨團選擇佔領主席台，進行高強度的杯葛；藍白陣營則試圖仗著人數優勢，包裹表決強渡關山。</p>
+                    <p>在兩極對立下，時代力量選擇對兩邊都提出有疑慮的地方：既批判民進黨在協商到一半時就癱瘓議事，讓實質審查流產、同時也猛烈抨擊藍白迴避監督的多數暴力。</p>
+                    <p>「網路上會罵我們冷眼旁觀、罵我們沒去幫忙架開藍白議員，好像沒打架就沒在做事。」林彥甫無奈卻堅定地說，時代力量在議會建立了「專業問政」的品牌，他們覺得議員的工作不是演戲給網友看、賺取網路聲量，而是將預算書攤開，一筆一筆檢視不合理之處。</p>
+                    
+                    <div class="conclusion-box">
+                        <p>面對網路上的兩極攻訐，時代力量試圖證明：在藍綠的激情對決之外，台灣政壇還需要一個「不看顏色，只看是非」的理性聲音，即便這個聲音，註定是孤獨的。</p>
+                    </div>
+                </div>
+
+                <hr style="border:0; border-top:1px solid #eee; margin: 60px 0;">
+
+                <div id="join-reason">
                     <h2>他們為什麼選擇加入時代力量？</h2>
                     <figure>
                         <img src="story/WangInt_LinLiaoBack.jpg" onerror="this.src='https://via.placeholder.com/800x450?text=WangInt_LinLiaoBack.jpg'" alt="時代力量">
@@ -144,7 +424,7 @@
                 </div>
 
                 <div id="stories">
-                    <h3 style="margin-top: 60px; margin-bottom: 20px; color: #666; font-size: 18px;">點擊人物閱讀故事：</h3>
+                    <h3 style="margin-top: 40px; margin-bottom: 20px; color: #666; font-size: 18px; border:none;">點擊人物閱讀故事：</h3>
                     
                     <div class="netflix-container">
                         <a href="wang.html" class="netflix-card">
@@ -172,6 +452,34 @@
             <p style="margin-top: 10px; font-size: 12px; color: #888;">Copyright © 2025 All Rights Reserved.</p>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // 平滑捲動
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // 觸發新聞堆疊動畫
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const cards = entry.target.querySelectorAll('.news-card');
+                        cards.forEach(card => card.classList.add('show'));
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            const newsSection = document.getElementById('news-animation-trigger');
+            if(newsSection) observer.observe(newsSection);
+        });
+    </script>
 
 </body>
 </html>
