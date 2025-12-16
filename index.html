@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的融媒體報導專題</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- 基礎設定 --- */
+        :root {
+            --primary-color: #c40d23; /* 報導者紅 */
+            --text-color: #404040;
+            --bg-color: #f1f1f1;
+            --white: #ffffff;
+            --link-color: #a67a44; /* 連結金棕色 */
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.8;
+        }
+
+        /* --- 版面配置 (Grid Layout) --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: var(--white);
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 250px 1fr; /* 左側選單 250px，右側內容自適應 */
+        }
+
+        /* --- 左側側邊欄 (TOC) --- */
+        .sidebar {
+            padding: 40px 20px;
+            border-right: 1px solid #eee;
+            background: #fff;
+        }
+
+        .sticky-menu {
+            position: sticky;
+            top: 40px; /* 讓目錄黏在頂端 */
+        }
+
+        .toc-title {
+            font-size: 14px;
+            color: #999;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .toc-list a {
+            display: block;
+            text-decoration: none;
+            color: #808080;
+            font-size: 15px;
+            margin-bottom: 12px;
+            padding-left: 10px;
+            border-left: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .toc-list a:hover {
+            color: var(--primary-color);
+            border-left: 2px solid var(--primary-color);
+        }
+
+        /* --- 右側主要內容 --- */
+        .main-content {
+            padding: 60px 80px;
+            max-width: 800px; /* 限制文章寬度以利閱讀 */
+            margin: 0 auto;
+        }
+
+        /* --- 標題樣式 --- */
+        h1 {
+            font-family: 'Noto Serif TC', serif; /* 大標題用襯線體 */
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            line-height: 1.4;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            color: #000;
+            border-bottom: 1px solid #ddd; /* 標題下灰線 */
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 22px;
+            margin-top: 30px;
+            color: #333;
+        }
+
+        /* --- 內文樣式 --- */
+        p {
+            font-size: 18px;
+            margin-bottom: 24px;
+            text-align: justify; /* 左右對齊 */
+        }
+
+        /* --- 圖片樣式 --- */
+        figure {
+            margin: 40px 0;
+            width: 100%;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        figcaption {
+            font-size: 14px;
+            color: #666;
+            margin-top: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--link-color); /* 圖說下方的金線 */
+            display: inline-block;
+        }
+
+        /* --- 引用區塊 (Blockquote) --- */
+        blockquote {
+            margin: 30px 0;
+            padding-left: 20px;
+            border-left: 4px solid var(--primary-color); /* 左側紅線 */
+            font-size: 20px;
+            font-weight: bold;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* --- 手機版適配 (RWD) --- */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr; /* 手機變單欄 */
+            }
+            .sidebar {
+                display: none; /* 手機版隱藏側邊欄 (或是移到最上方) */
+            }
+            .main-content {
+                padding: 30px 20px;
+            }
+            h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <aside class="sidebar">
+            <div class="sticky-menu">
+                <div class="toc-title">目錄 CONTENTS</div>
+                <nav class="toc-list">
+                    <a href="#section1">1. 前言：小黨的困境</a>
+                    <a href="#section2">2. 時代力量：太陽花後的挑戰</a>
+                    <a href="#section3">3. 台灣基進：堅持理念</a>
+                    <a href="#section4">4. 親民黨：老牌政黨求生</a>
+                    <a href="#section5">5. 結語：多元聲音的未來</a>
+                </nav>
+            </div>
+        </aside>
+
+        <article class="main-content">
+            <h1>小黨後戰國時代：藍綠白壓陣，時力、基進、親民黨力求突圍</h1>
+            
+            <p style="font-size: 14px; color: #888;">記者／賴昀佳 &nbsp; 攝影／XXX &nbsp; 設計／XXX</p>
+            <hr style="border:0; border-top:1px solid #eee; margin: 30px 0;">
+
+            <div id="section1">
+                <p><strong>台灣選舉制度不利於小黨生存，在藍綠白的壓縮下，其他小黨此次已面臨嚴峻的生存保衛戰。</strong>我們訪問時代力量、親民黨、台灣基進的重要幹部及學者，觀察他們面臨什麼困難？</p>
+            </div>
+
+            <figure>
+                <img src="https://www.twreporter.org/images/20240104164643-008418ae6fc4e77d4d1f846422323e85-desktop.jpg" alt="圖片說明">
+                <figcaption>台灣立委選舉制度自2008年改為單一選區兩票制，被視為不利於小黨生存。（攝影／黃世澤）</figcaption>
+            </figure>
+
+            <div id="section2">
+                <h2>背負太陽花學運期待，時力的進與退</h2>
+                <p>2014年太陽花學運爆發後，激勵年輕世代參政與小黨力量崛起，時代力量是當時風潮中最具代表性的小黨。</p>
+                
+                <blockquote>
+                    「從社運出來的政黨不可能去喊要死刑、核能甚至支持服貿，就被民眾黨極大壓縮生存空間。」——吳崢
+                </blockquote>
+
+                <p>曾分別以時代力量、無黨籍身分競選台北市議員的太陽花學運要角吳崢，在歷經兩次失敗後，於去年5月正式加入民進黨。</p>
+            </div>
+
+            <div id="section3">
+                <h2>台灣基進北上打天下，強調小黨存在的必要性</h2>
+                <p>在2016年正式登記的台灣基進，和時代力量一樣是年輕政黨。2020年首次進軍國會選舉，就由「3Q」陳柏惟擊敗國民黨籍候選人顏寬恒取得台中區域立委席次。</p>
+                <figure>
+                    <img src="https://via.placeholder.com/800x500" alt="圖片預留位">
+                    <figcaption>這是一個圖片預留位置，請上傳你的照片到 Github 並替換連結。</figcaption>
+                </figure>
+                <p>吳欣岱在接受訪問時回顧上半年選戰策略的討論，她指出過程中幹部們並沒有太多衝突，大家很快達成共識。</p>
+            </div>
+
+            <div id="section4">
+                <h2>親民黨：宋楚瑜在改變，台灣需要煞車者</h2>
+                <p>新興小黨載浮載沉，老牌政黨親民黨同樣面臨生存危機。不同的是，親民黨曾經叱咤風雲，2001年創黨後首次投入國會選舉中就獲得46席立委。</p>
+            </div>
+
+            <div id="section5">
+                <h2>結語：多元聲音的未來</h2>
+                <p>當社會運動浪潮褪去，亦或是政黨明星光環褪色，相應而生的小黨都必然遭遇嚴酷生存挑戰。這次大選之後，台灣政治生態會更朝著責任政治或是多元代表方向前進，端看選民的抉擇。</p>
+            </div>
+
+            <div style="height: 100px;"></div> </article>
+    </div>
+
+</body>
+</html>
