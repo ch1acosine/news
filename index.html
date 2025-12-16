@@ -31,25 +31,31 @@
             min-height: 100vh;
         }
 
+        /* --- 標題字體設定 --- */
         h1, h2, h3 {
             font-family: 'Noto Serif TC', serif;
             color: var(--accent-black);
         }
 
+        /* --- 版面配置 --- */
         .main-wrapper { flex: 1; width: 100%; background-color: var(--white); }
         .container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 250px 1fr; }
 
+        /* --- 左側側邊欄 --- */
         .sidebar { padding: 40px 20px; border-right: 1px solid #eee; background: #fff; height: 100vh; position: sticky; top: 0; overflow-y: auto; }
         .sticky-menu { position: sticky; top: 40px; }
         .toc-title { font-size: 14px; color: #999; margin-bottom: 15px; letter-spacing: 1px; font-weight: bold; }
+        
         .toc-list { display: flex; flex-direction: column; gap: 12px; }
         .toc-list a { text-decoration: none; color: var(--link-color); font-size: 15px; padding-left: 10px; border-left: 3px solid transparent; transition: all 0.3s; }
         .toc-list a:hover { color: var(--accent-black); border-left: 3px solid var(--primary-color); font-weight: bold; }
 
+        /* --- 右側主要內容 --- */
         .main-content { padding: 60px 80px; max-width: 800px; margin: 0 auto; background-color: var(--white); }
 
         h1 { font-size: 36px; font-weight: 700; margin-bottom: 40px; line-height: 1.4; border-bottom: 1px solid #eee; padding-bottom: 20px; }
         
+        /* H2: 主要標題 (對應 #) */
         h2 { 
             font-size: 30px; 
             margin-top: 80px; 
@@ -59,6 +65,7 @@
             line-height: 1.3;
         }
 
+        /* H3: 次要標題 (對應 ##) */
         h3 { 
             font-size: 24px; 
             margin-top: 50px; 
@@ -71,75 +78,53 @@
 
         p { font-size: 18px; margin-bottom: 24px; text-align: justify; }
 
+        /* --- 圖片與嵌入 --- */
         figure { margin: 40px 0; width: 100%; }
         img { width: 100%; height: auto; display: block; border-radius: 4px; }
         figcaption { font-size: 14px; color: #666; margin-top: 10px; padding-bottom: 5px; border-bottom: 1px solid #ddd; display: inline-block; }
 
-        /* --- 引用區塊 (Quote) --- */
-        blockquote { 
-            margin: 40px 0; 
-            padding: 25px 30px; 
-            border-left: 5px solid var(--primary-color); 
-            background-color: #fffdf0; /* 淡黃色背景 */
-            font-size: 21px; 
-            font-family: 'Noto Serif TC', serif; 
-            font-weight: bold; 
-            color: var(--accent-black); 
-            line-height: 1.6;
-        }
+        /* --- 引用區塊 --- */
+        blockquote { margin: 30px 0; padding: 20px 30px; border-left: 5px solid var(--primary-color); background-color: #fffdf0; font-size: 20px; font-family: 'Noto Serif TC', serif; font-weight: bold; color: var(--accent-black); }
 
-        /* --- 手機留言動畫區塊 (修正版) --- */
+        /* --- 手機留言動畫區塊 --- */
         .phone-comment-section {
-            /* 移除原本的灰色背景，改成透明或與主背景融合 */
-            background-color: transparent; 
-            padding: 40px 0;
+            background-color: #f0f2f5;
+            border-radius: 20px;
+            padding: 40px 20px;
             margin: 40px 0;
             display: flex;
             justify-content: center;
+            overflow: hidden;
         }
 
         .phone-frame {
-            width: 320px;       /* 正常手機寬度 */
-            height: 640px;      /* 正常手機比例 9:18 */
+            width: 300px;
+            height: 500px;
             background-color: #fff;
-            border: 10px solid #222; /* 手機邊框 */
-            border-radius: 40px;
+            border: 8px solid #333;
+            border-radius: 30px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
-        }
-
-        /* 瀏海 */
-        .phone-notch {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 150px;
-            height: 25px;
-            background-color: #222;
-            border-bottom-left-radius: 12px;
-            border-bottom-right-radius: 12px;
-            z-index: 10;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
 
         .comment-container {
-            padding: 50px 15px 15px; /* 上方留白避開瀏海 */
+            padding: 40px 15px 15px;
             display: flex;
             flex-direction: column;
             gap: 15px;
             height: 100%;
-            background-color: #f5f5f5; /* 聊天室背景色 */
-            overflow-y: hidden; 
+            overflow-y: auto; /* 允許滾動 */
+            background-color: #fff;
         }
         
         .comment-bubble {
-            padding: 12px 16px;
+            padding: 10px 15px;
             border-radius: 18px;
-            font-size: 15px;
+            font-size: 14px;
             line-height: 1.4;
             max-width: 85%;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
             opacity: 0;
             transform: translateY(20px);
             animation: popUp 0.5s ease forwards;
@@ -147,11 +132,19 @@
 
         .comment-left {
             align-self: flex-start;
-            background-color: #ffffff;
+            background-color: #e4e6eb;
             color: #050505;
             border-bottom-left-radius: 4px;
         }
         
+        .comment-right {
+            align-self: flex-end;
+            background-color: var(--primary-color);
+            color: #000;
+            border-bottom-right-radius: 4px;
+            font-weight: bold;
+        }
+
         .delay-1 { animation-delay: 0.5s; }
         .delay-2 { animation-delay: 1.5s; }
         .delay-3 { animation-delay: 2.5s; }
@@ -178,7 +171,7 @@
             bottom: 5px;
             left: 50%;
             transform: translateX(-50%);
-            width: 160px;
+            width: 120px;
             height: 15px;
             background-color: var(--primary-color);
             z-index: -1;
@@ -188,7 +181,7 @@
         /* --- 新聞堆疊動畫 --- */
         .news-stack-container {
             position: relative;
-            height: 300px;
+            height: 300px; /* 預留高度給圖片堆疊 */
             margin: 40px 0;
             display: flex;
             justify-content: center;
@@ -206,11 +199,32 @@
             transform: translateY(50px) scale(0.9);
         }
 
+        /* 用於觸發動畫的 class */
         .news-card.show { opacity: 1; }
         
+        /* 堆疊層次 */
         .news-1.show { transform: translateY(0) scale(1) rotate(-3deg); z-index: 1; }
         .news-2.show { transform: translateY(20px) scale(1) rotate(2deg); z-index: 2; transition-delay: 0.3s; }
         .news-3.show { transform: translateY(40px) scale(1) rotate(-1deg); z-index: 3; transition-delay: 0.6s; }
+
+        /* Pop-up 新聞動畫 (新區塊使用) */
+        .popup-news-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+            height: 250px;
+            margin: 40px 0;
+            overflow: hidden;
+        }
+        .popup-news-card {
+            width: 30%;
+            opacity: 0;
+            transform: translateY(100px);
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .popup-news-card.show { opacity: 1; transform: translateY(0); }
+
 
         /* --- 結語框框 --- */
         .conclusion-box {
@@ -274,9 +288,11 @@
         
         .netflix-card:hover img { filter: brightness(1.1); }
 
+        /* Footer */
         .site-footer { background-color: var(--accent-black); color: #bbb; padding: 30px 0; text-align: center; margin-top: auto; border-top: 4px solid var(--primary-color); }
         .designer-name { color: var(--primary-color); font-weight: bold; }
 
+        /* RWD */
         @media (max-width: 768px) {
             .container { grid-template-columns: 1fr; }
             .sidebar { display: none; }
@@ -284,6 +300,9 @@
             h1 { font-size: 28px; }
             .netflix-container { grid-template-columns: 1fr; gap: 30px; }
             .news-stack-container { height: 250px; }
+            .popup-news-container { flex-direction: column; height: auto; align-items: center; gap: 20px; }
+            .popup-news-card { width: 80%; transform: translateX(-50px); }
+            .popup-news-card.show { transform: translateX(0); }
         }
     </style>
 </head>
@@ -302,6 +321,9 @@
                         <a href="#green-anxiety">直球對決綠營焦慮</a>
                         <a href="#hsinchu-lab">新竹實驗室</a>
                         <a href="#third-way">預算審查的第三條路</a>
+                        <a href="#future-road">未來的路，怎麼走？</a>
+                        <a href="#issue-front">議題出發的戰線</a>
+                        <a href="#four-party">四黨合作</a>
                     </nav>
                 </div>
             </aside>
@@ -446,6 +468,97 @@
                     </div>
                 </div>
 
+                <hr style="border:0; border-top:1px solid #eee; margin: 80px 0;">
+
+                <div id="future-road">
+                    <h2>未來的路，怎麼走？</h2>
+                    <p>理想是很滿的，但身為政黨面對民意的檢視就是靠兩年、四年一次的選舉。</p>
+
+                    <div id="issue-front">
+                        <h3>議題出發的戰線</h3>
+                        <p>將目光拉回選戰最前線，很多人在問，失去黃國昌這位「政治明星」後，時代力量還能選嗎？</p>
+                        <blockquote>「大家常迷信母雞帶小雞，但這兩者真的畫上等號嗎？」</blockquote>
+                        
+                        <p><strong>王婉諭質疑了「母雞帶小雞」這點</strong>。有政治明星固然是件好事，但這「可遇不可求」，而且從時力在2022 的選戰來看，王婉諭比較了在台北跟新竹的狀況：台北即便有黃國昌大力輔選仍落選，但跟新竹相比，卻能維持三席議員並讓第四席高票落選。她認為，第三勢力的選民難以被傳統組織動員，靠的是「議題動員」。</p>
+                        
+                        <figure>
+                            <img src="Road/Huang_Chen.jpg" onerror="this.src='https://via.placeholder.com/800x450?text=Huang_Chen.jpg'" alt="黃國昌輔選">
+                            <figcaption>2022年黃國昌為市議員參選人陳志明。翻攝自 黃國昌 臉書。</figcaption>
+                        </figure>
+
+                        <p>新竹市作為時代力量的「起家厝」，成為檢驗這套「議題戰法」的最佳場域。王婉諭分析，竹科的外溢效應創造了大量中產階級與年輕家庭，這些選民對藍綠傳統政治冷感，重視專業與數據，是時力最穩固的基本盤。</p>
+                        <p>林彥甫也提到了時力在地方的「品牌區隔」。相較於傳統議員著重「個案服務」或「跑紅白帖」，時力議員主打「專業問政」與「制度改革」。</p>
+                        
+                        <blockquote>「議會的工作人員都跟我們說，時力進來之後大家的質詢品質開始大幅提升」</blockquote>
+                        
+                        <p>林彥甫回憶起剛進議會的時候，他說以前議會裡面幾乎沒有人在用 PowerPoint質詢的，後來讓其他議員開始也有壓力，開始跟進。」</p>
+                        <p>以林彥甫自己遇到的例子來說，他在2022年接到在地民眾反應「無良建商片面解約」、「偽造同業履約擔保書」，但建商卻脫產後，讓民眾求償無門的案例。當時擔任立委的邱顯智也接到另一個陳情，雙薪家庭省吃儉用卻同樣遇到惡質建商。</p>
+                        
+                        <figure>
+                            <img src="Road/lin_presale.jpg" onerror="this.src='https://via.placeholder.com/800x450?text=lin_presale.jpg'" alt="建商爭議">
+                            <figcaption>翻攝自 林彥甫 臉書。</figcaption>
+                        </figure>
+
+                        <p>林彥甫和邱顯智召開了記者會，呼籲內政部要儘速修正相關的履約保證制度，把「預售屋」也納入民法登記預告的範圍，保障消費者權益。</p>
+                        
+                        <blockquote>「我們不只處理個案而已，我們對於怎麼樣子制度變得更好會花非常多力氣」</blockquote>
+                        
+                        <figure>
+                            <img src="Road/presale.jpg" onerror="this.src='https://via.placeholder.com/800x450?text=presale.jpg'" alt="邱顯智與林彥甫">
+                            <figcaption>時任立委邱顯智（中）及林彥甫（左）。翻攝自 邱顯智 臉書。</figcaption>
+                        </figure>
+                        
+                        <p>這是林彥甫覺得他們跟傳統議員很不同的地方，透過個案搭配制度的改變，能成為質詢或記者會主題，擁有完整論述後，媒體自然也比較願意報導。</p>
+                        
+                        <div class="big-text">時代力量對2026的期許是議員要倍增</div>
+                        <p>從現有的四席倍增到八席。在以議題導向的策略中，要怎麼把這些轉換為「選票」呢？</p>
+
+                        <figure>
+                            <img src="Road/2022_Hsinchu_candi.jpg" onerror="this.src='https://via.placeholder.com/800x450?text=2022_Hsinchu_candi.jpg'" alt="新竹候選人">
+                            <figcaption>2022新竹市議員，時代力量提名的四個人選。翻攝自 自由時報，攝影 / 洪美秀。</figcaption>
+                        </figure>
+
+                        <p>以新竹市時代力量的三席議員為例，林彥甫（北區）主攻交通財政、代課老師出身的蔡惠婷（東區）專注教育、廖子齊（東山區）則深耕環保、文化，透過不同議題推動，各地的專業人士也會串聯支持，形成複合式的戰力。</p>
+                    </div>
+
+                    <div id="four-party">
+                        <h3>四黨合作</h3>
+                        
+                        <div class="popup-news-container" id="popup-trigger">
+                            <img src="Road/4party_News/n1.png" onerror="this.src='https://via.placeholder.com/200x150?text=News1'" class="popup-news-card delay-1" alt="新聞1">
+                            <img src="Road/4party_News/n2.png" onerror="this.src='https://via.placeholder.com/200x150?text=News2'" class="popup-news-card delay-2" alt="新聞2">
+                            <img src="Road/4party_News/n3.png" onerror="this.src='https://via.placeholder.com/200x150?text=News3'" class="popup-news-card delay-3" alt="新聞3">
+                        </div>
+
+                        <p>今年的九月九號，時代力量、台灣基進、小民參政歐巴桑聯盟和台灣綠黨，四個黨一起宣正式對外宣布要攜手合作邁向2026的地方大選。歷經了一年多的討倫和磨合，他們打出了「民進黨執政的傲慢忘記初衷」、「國民黨卻始終甩不掉親中」，他們對外的立場是一致的：必需要守護主權、抵抗中國侵略。但不是所有議題都能簡化成統獨對立、隨便就發動仇恨動員，對內要監督制衡、改善民生。</p>
+                        <p>林彥甫覺得，這是個對的方向也必須要走，因為2022很多的選區之間就是小黨間相互競爭對決，卻導致了大家都沒上的結果。</p>
+
+                        <h4>資源稀缺下的精準分工</h4>
+                        <figure>
+                            <img src="Road/fourPar.jpg" onerror="this.src='https://via.placeholder.com/800x450?text=fourPar.jpg'" alt="四黨合作">
+                            <figcaption>四黨合作記者會。翻攝自 時代力量官網。</figcaption>
+                        </figure>
+                        <p>「我們已經小到沒有分裂的本錢了。」入黨兩年的決策委員廖啟帆一語道破了小黨面臨的殘酷現實。他回顧過往選舉，不論是基隆、宜蘭還是高雄， 小黨間互相推派人選，結果在票源重疊下「網內互打」，導致全軍覆沒。</p>
+                        <p>他分析，四黨其實各有擅長領域：「基進主攻主權議題，時力專注交通改革與兒少權益，小歐盟則深耕教育與親子戰場。」 這不僅是為了避免互搶選票，更是為了在民進黨往中間靠攏、施政必須採取中庸之道時，由小黨分頭承擔起不同面向的進步價值，接住那些對大黨失望、卻又不願流向藍白的選民。</p>
+
+                        <h4>化解宿怨：從互相叫罵到坐下來談</h4>
+                        <figure>
+                            <img src="Road/state_meal.jpg" onerror="this.src='https://via.placeholder.com/800x450?text=state_meal.jpg'" alt="募款餐會">
+                            <figcaption>台灣基進募款餐會，左起基進黨主席王興煥、綠黨共同召集人甘崇緯、時代力量黨主席王婉諭、小民參政歐巴桑問政聯盟召集人林詩涵。翻攝自 林詩涵 臉書。</figcaption>
+                        </figure>
+                        <p>然而，結盟之路最大的障礙，往往來自過去的恩怨。身兼決策委員的新竹市議員林彥甫不諱言，溝通衝突性最高的，就是與台灣基進的合作。</p>
+                        <p>「過去在地方選舉，基進跟時力的候選人互罵、互嗆的情況非常明顯，甚至我們還曾被抹黑我成『中共同路人』。」林彥甫回憶，這些激烈的選舉語言讓部分深耕地方的支持者難以釋懷，特別是在宜蘭與高雄等「一級戰區」，基層的反彈聲浪一度相當強烈。</p>
+                        <p>為了化解疑慮，黨中央與決策委員親赴各地舉辦座談會，與支持者面對面溝通。林彥甫強調，促成轉機的關鍵在於「換血」。近年來，不論是基進、綠黨、小歐盟還是時代力量，決策圈都經歷了一輪大換血。新一代的決策者更能放下過去由少數政治明星主導下的意氣之爭，理性地看見「選區不互踩」的必要性。</p>
+                        <blockquote>「大家坐下來談後發現，其實彼此的理念價值並沒有差得那麼遠，過去的衝突多半是選舉攻防，而非核心價值的對立。」</blockquote>
+
+                        <h4>黨內的溝通機制又是什麼</h4>
+                        <p>對於這場跨黨派合作，黨主席王婉諭更在意的是程序的正當性。她坦言，過去時期黨內壁壘分明，被劃分為「昌派」與「非昌派」，缺乏溝通機制，許多決策淪為特定勢力的把持。</p>
+                        <blockquote>「現在的時代力量，是對外要求公開透明，對內也必須做到的政黨。」</blockquote>
+                        <p>王婉諭強調，四黨聯盟的推動並非主席一人說了算，而是從去年開始，每一次的接觸與談判都提到決策委員會上討論，經過集體共識才定案。</p>
+                        <p>展望 2026，時代力量將目標設定在「四席翻倍至八席」，並鎖定竹竹苗與六都成立黨團。林彥甫更期許，這個聯盟的強度能進一步提升，不只是消極的「不互打」，更應推出「共同政見」，在全國性議題上採取聯合攻勢。當民眾黨在立法院選擇向國民黨靠攏，而民進黨又受限於執政包袱時，這股整合後的第三勢力，將試圖證明自己才是監督制衡的最佳選擇。</p>
+                    </div>
+                </div>
+
                 <div style="height: 100px;"></div>
             </article>
         </div>
@@ -483,6 +596,24 @@
 
             const newsSection = document.getElementById('news-animation-trigger');
             if(newsSection) observer.observe(newsSection);
+
+            // 觸發四黨合作 Pop-up 動畫
+            const popupObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const cards = entry.target.querySelectorAll('.popup-news-card');
+                        cards.forEach((card, index) => {
+                            setTimeout(() => {
+                                card.classList.add('show');
+                            }, index * 200); // 依序出現
+                        });
+                        popupObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            const popupSection = document.getElementById('popup-trigger');
+            if(popupSection) popupObserver.observe(popupSection);
         });
     </script>
 
