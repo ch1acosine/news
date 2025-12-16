@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的融媒體報導專題</title>
+    <title>時代力量的過去與未來？</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
@@ -11,11 +11,17 @@
     <style>
         /* --- 基礎設定 --- */
         :root {
-            --primary-color: #c40d23; /* 報導者紅 */
+            /* 核心主色調：亮黃色 */
+            --primary-color: #fdd202;
+            /* 用於強調文字的深黑色，與黃色形成對比 */
+            --accent-black: #222222;
+            /* 一般內文顏色 */
             --text-color: #404040;
-            --bg-color: #f1f1f1;
+            /* 背景色 */
+            --bg-color: #f9f9f9;
             --white: #ffffff;
-            --link-color: #a67a44; /* 連結金棕色 */
+            /* 連結顏色 (未點擊前使用較中性的深灰) */
+            --link-color: #555555; 
         }
 
         body {
@@ -25,14 +31,22 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.8;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         /* --- 版面配置 (Grid Layout) --- */
+        /* 主要內容區塊撐開高度 */
+        .main-wrapper {
+            flex: 1; 
+            width: 100%;
+            background-color: var(--white);
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            background-color: var(--white);
-            min-height: 100vh;
             display: grid;
             grid-template-columns: 250px 1fr; /* 左側選單 250px，右側內容自適應 */
         }
@@ -54,22 +68,25 @@
             color: #999;
             margin-bottom: 15px;
             letter-spacing: 1px;
+            font-weight: bold;
         }
 
         .toc-list a {
             display: block;
             text-decoration: none;
-            color: #808080;
+            color: var(--link-color);
             font-size: 15px;
             margin-bottom: 12px;
             padding-left: 10px;
-            border-left: 2px solid transparent;
+            border-left: 3px solid transparent; /* 預留邊框位置 */
             transition: all 0.3s;
         }
 
+        /* 滑鼠經過目錄時的變色：文字變黑，左側出現黃線 */
         .toc-list a:hover {
-            color: var(--primary-color);
-            border-left: 2px solid var(--primary-color);
+            color: var(--accent-black);
+            border-left: 3px solid var(--primary-color);
+            font-weight: bold;
         }
 
         /* --- 右側主要內容 --- */
@@ -77,6 +94,7 @@
             padding: 60px 80px;
             max-width: 800px; /* 限制文章寬度以利閱讀 */
             margin: 0 auto;
+            background-color: var(--white);
         }
 
         /* --- 標題樣式 --- */
@@ -84,6 +102,7 @@
             font-family: 'Noto Serif TC', serif; /* 大標題用襯線體 */
             font-size: 36px;
             font-weight: 700;
+            color: var(--accent-black);
             margin-bottom: 30px;
             line-height: 1.4;
         }
@@ -92,15 +111,16 @@
             font-size: 28px;
             margin-top: 50px;
             margin-bottom: 20px;
-            color: #000;
-            border-bottom: 1px solid #ddd; /* 標題下灰線 */
+            color: var(--accent-black);
+            /* 標題下方改用粗黃線強調 */
+            border-bottom: 3px solid var(--primary-color); 
             padding-bottom: 10px;
         }
 
         h3 {
             font-size: 22px;
             margin-top: 30px;
-            color: #333;
+            color: var(--accent-black);
         }
 
         /* --- 內文樣式 --- */
@@ -110,7 +130,7 @@
             text-align: justify; /* 左右對齊 */
         }
 
-        /* --- 圖片樣式 --- */
+        /* --- 圖片與嵌入樣式 --- */
         figure {
             margin: 40px 0;
             width: 100%;
@@ -122,25 +142,58 @@
             display: block;
         }
 
+        /* Flourish 嵌入容器修正 */
+        .flourish-embed {
+            width: 100% !important;
+        }
+
         figcaption {
             font-size: 14px;
             color: #666;
-            margin-top: 10px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid var(--link-color); /* 圖說下方的金線 */
+            margin-top: 15px;
+            padding-bottom: 8px;
+            /* 圖說下方使用細黃線 */
+            border-bottom: 2px solid var(--primary-color); 
             display: inline-block;
+            font-weight: 500;
         }
 
         /* --- 引用區塊 (Blockquote) --- */
         blockquote {
             margin: 30px 0;
             padding-left: 20px;
-            border-left: 4px solid var(--primary-color); /* 左側紅線 */
-            font-size: 20px;
+            /* 左側改為粗黃線 */
+            border-left: 5px solid var(--primary-color); 
+            font-size: 22px; /* 稍微加大 */
+            font-family: 'Noto Serif TC', serif;
             font-weight: bold;
-            color: #555;
+            color: var(--accent-black);
             line-height: 1.6;
+            background-color: #fffdf0; /* 極淡的黃色背景增加層次 */
+            padding: 20px;
         }
+
+        /* --- Footer 樣式 (新增) --- */
+        .site-footer {
+            background-color: var(--accent-black);
+            color: #bbb;
+            padding: 30px 0;
+            text-align: center;
+            margin-top: auto; /* 確保 footer 在最底部 */
+            border-top: 4px solid var(--primary-color); /* 頂部黃色裝飾線 */
+        }
+
+        .site-footer p {
+            font-size: 14px;
+            margin: 0;
+            text-align: center;
+        }
+        
+        .designer-name {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
 
         /* --- 手機版適配 (RWD) --- */
         @media (max-width: 768px) {
@@ -148,7 +201,7 @@
                 grid-template-columns: 1fr; /* 手機變單欄 */
             }
             .sidebar {
-                display: none; /* 手機版隱藏側邊欄 (或是移到最上方) */
+                display: none; /* 手機版隱藏側邊欄 */
             }
             .main-content {
                 padding: 30px 20px;
@@ -156,73 +209,93 @@
             h1 {
                 font-size: 28px;
             }
+            blockquote {
+                font-size: 18px;
+                padding: 15px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <aside class="sidebar">
-            <div class="sticky-menu">
-                <div class="toc-title">目錄 CONTENTS</div>
-                <nav class="toc-list">
-                    <a href="#section1">1. 前言：小黨的困境</a>
-                    <a href="#section2">2. 時代力量：太陽花後的挑戰</a>
-                    <a href="#section3">3. 台灣基進：堅持理念</a>
-                    <a href="#section4">4. 親民黨：老牌政黨求生</a>
-                    <a href="#section5">5. 結語：多元聲音的未來</a>
-                </nav>
-            </div>
-        </aside>
+    <div class="main-wrapper">
+        <div class="container">
+            <aside class="sidebar">
+                <div class="sticky-menu">
+                    <div class="toc-title">目錄 CONTENTS</div>
+                    <nav class="toc-list">
+                        <a href="#section1">1. 前言：小黨的困境</a>
+                        <a href="#section2">2. 時代力量：太陽花後的挑戰</a>
+                        <a href="#section3">3. 台灣基進：堅持理念</a>
+                        <a href="#section4">4. 親民黨：老牌政黨求生</a>
+                        <a href="#section5">5. 結語：多元聲音的未來</a>
+                    </nav>
+                </div>
+            </aside>
 
-        <article class="main-content">
-            <h1>小黨後戰國時代：藍綠白壓陣，時力、基進、親民黨力求突圍</h1>
-            
-            <p style="font-size: 14px; color: #888;">記者／賴昀佳 &nbsp; 攝影／XXX &nbsp; 設計／XXX</p>
-            <hr style="border:0; border-top:1px solid #eee; margin: 30px 0;">
-
-            <div id="section1">
-                <p><strong>台灣選舉制度不利於小黨生存，在藍綠白的壓縮下，其他小黨此次已面臨嚴峻的生存保衛戰。</strong>我們訪問時代力量、親民黨、台灣基進的重要幹部及學者，觀察他們面臨什麼困難？</p>
-            </div>
-
-            <figure>
-                <img src="https://www.twreporter.org/images/20240104164643-008418ae6fc4e77d4d1f846422323e85-desktop.jpg" alt="圖片說明">
-                <figcaption>台灣立委選舉制度自2008年改為單一選區兩票制，被視為不利於小黨生存。（攝影／黃世澤）</figcaption>
-            </figure>
-
-            <div id="section2">
-                <h2>背負太陽花學運期待，時力的進與退</h2>
-                <p>2014年太陽花學運爆發後，激勵年輕世代參政與小黨力量崛起，時代力量是當時風潮中最具代表性的小黨。</p>
+            <article class="main-content">
+                <h1>小黨後戰國時代：藍綠白壓陣，時力、基進、親民黨力求突圍</h1>
                 
-                <blockquote>
-                    「從社運出來的政黨不可能去喊要死刑、核能甚至支持服貿，就被民眾黨極大壓縮生存空間。」——吳崢
-                </blockquote>
+                <p style="font-size: 14px; color: #555; font-weight: 500;">記者／賴昀佳 &nbsp; 攝影／XXX &nbsp; 設計／XXX</p>
+                <hr style="border:0; border-top:2px solid var(--primary-color); margin: 20px 0 40px 0; opacity: 0.5;">
 
-                <p>曾分別以時代力量、無黨籍身分競選台北市議員的太陽花學運要角吳崢，在歷經兩次失敗後，於去年5月正式加入民進黨。</p>
-            </div>
+                <div id="section1">
+                    <p><strong>台灣選舉制度不利於小黨生存，在藍綠白的壓縮下，其他小黨此次已面臨嚴峻的生存保衛戰。</strong>我們訪問時代力量、親民黨、台灣基進的重要幹部及學者，觀察他們面臨什麼困難？</p>
+                </div>
 
-            <div id="section3">
-                <h2>台灣基進北上打天下，強調小黨存在的必要性</h2>
-                <p>在2016年正式登記的台灣基進，和時代力量一樣是年輕政黨。2020年首次進軍國會選舉，就由「3Q」陳柏惟擊敗國民黨籍候選人顏寬恒取得台中區域立委席次。</p>
                 <figure>
-                    <img src="https://via.placeholder.com/800x500" alt="圖片預留位">
-                    <figcaption>這是一個圖片預留位置，請上傳你的照片到 Github 並替換連結。</figcaption>
+                    <img src="https://www.twreporter.org/images/20240104164643-008418ae6fc4e77d4d1f846422323e85-desktop.jpg" alt="圖片說明">
+                    <figcaption>台灣立委選舉制度自2008年改為單一選區兩票制，被視為不利於小黨生存。（攝影／黃世澤）</figcaption>
                 </figure>
-                <p>吳欣岱在接受訪問時回顧上半年選戰策略的討論，她指出過程中幹部們並沒有太多衝突，大家很快達成共識。</p>
-            </div>
 
-            <div id="section4">
-                <h2>親民黨：宋楚瑜在改變，台灣需要煞車者</h2>
-                <p>新興小黨載浮載沉，老牌政黨親民黨同樣面臨生存危機。不同的是，親民黨曾經叱咤風雲，2001年創黨後首次投入國會選舉中就獲得46席立委。</p>
-            </div>
+                <div id="section2">
+                    <h2>背負太陽花學運期待，時力的進與退</h2>
+                    <p>2014年太陽花學運爆發後，激勵年輕世代參政與小黨力量崛起，時代力量是當時風潮中最具代表性的小黨。</p>
+                    
+                    <blockquote>
+                        「從社運出來的政黨不可能去喊要死刑、核能甚至支持服貿，就被民眾黨極大壓縮生存空間。」——吳崢
+                    </blockquote>
 
-            <div id="section5">
-                <h2>結語：多元聲音的未來</h2>
-                <p>當社會運動浪潮褪去，亦或是政黨明星光環褪色，相應而生的小黨都必然遭遇嚴酷生存挑戰。這次大選之後，台灣政治生態會更朝著責任政治或是多元代表方向前進，端看選民的抉擇。</p>
-            </div>
+                    <p>曾分別以時代力量、無黨籍身分競選台北市議員的太陽花學運要角吳崢，在歷經兩次失敗後，於去年5月正式加入民進黨。</p>
+                </div>
 
-            <div style="height: 100px;"></div> </article>
+                <div id="section3">
+                    <h2>台灣基進北上打天下，強調小黨存在的必要性</h2>
+                    <p>在2016年正式登記的台灣基進，和時代力量一樣是年輕政黨。2020年首次進軍國會選舉，就由「3Q」陳柏惟擊敗國民黨籍候選人顏寬恒取得台中區域立委席次。</p>
+                    
+                    <figure>
+                        <div class="flourish-embed flourish-parliament" data-src="visualisation/26700264">
+                            <script src="https://public.flourish.studio/resources/embed.js"></script>
+                            <noscript><img src="https://public.flourish.studio/visualisation/26700264/thumbnail" width="100%" alt="parliament visualization" /></noscript>
+                        </div>
+                        <figcaption>
+                            圖表說明：這裡是可以填寫 Flourish 圖表說明的空間。請敘述數據來源或圖表重點。
+                        </figcaption>
+                    </figure>
+                    <p>吳欣岱在接受訪問時回顧上半年選戰策略的討論，她指出過程中幹部們並沒有太多衝突，大家很快達成共識。</p>
+                </div>
+
+                <div id="section4">
+                    <h2>親民黨：宋楚瑜在改變，台灣需要煞車者</h2>
+                    <p>新興小黨載浮載沉，老牌政黨親民黨同樣面臨生存危機。不同的是，親民黨曾經叱咤風雲，2001年創黨後首次投入國會選舉中就獲得46席立委。</p>
+                </div>
+
+                <div id="section5">
+                    <h2>結語：多元聲音的未來</h2>
+                    <p>當社會運動浪潮褪去，亦或是政黨明星光環褪色，相應而生的小黨都必然遭遇嚴酷生存挑戰。這次大選之後，台灣政治生態會更朝著責任政治或是多元代表方向前進，端看選民的抉擇。</p>
+                </div>
+
+                <div style="height: 60px;"></div> 
+            </article>
+        </div>
     </div>
+
+    <footer class="site-footer">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <p>專題設計：<span class="designer-name">您的名字</span></p>
+            <p style="margin-top: 10px; font-size: 12px; color: #888;">Copyright © 2025 All Rights Reserved.</p>
+        </div>
+    </footer>
 
 </body>
 </html>
