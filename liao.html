@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>廖啟帆：在全場噓聲中看見真正的時代力量 | 時代力量的過去與未來？</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- 基礎設定 --- */
+        :root {
+            --primary-color: #fdd202; /* 亮黃色 */
+            --accent-black: #222222;  /* 深黑色 */
+            --text-color: #404040;
+            --bg-color: #f9f9f9;
+            --white: #ffffff;
+            --link-color: #555555; 
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans TC', sans-serif; 
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.8;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- 標題字體設定 --- */
+        h1, h2, h3, h4 {
+            font-family: 'Noto Serif TC', serif;
+            color: var(--accent-black);
+        }
+
+        /* --- 版面配置 --- */
+        .main-wrapper { flex: 1; width: 100%; background-color: var(--white); }
+        .container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 250px 1fr; }
+
+        /* --- 左側側邊欄 --- */
+        .sidebar { padding: 40px 20px; border-right: 1px solid #eee; background: #fff; height: 100vh; position: sticky; top: 0; }
+        .sticky-menu { position: sticky; top: 40px; }
+        
+        /* 回首頁按鈕 */
+        .back-btn {
+            display: inline-block;
+            text-decoration: none;
+            color: var(--accent-black);
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 30px;
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            transition: all 0.3s;
+            background-color: #fff;
+        }
+        .back-btn:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .toc-title { font-size: 14px; color: #999; margin-bottom: 15px; letter-spacing: 1px; font-weight: bold; text-transform: uppercase; }
+        
+        .toc-list { display: flex; flex-direction: column; gap: 12px; }
+        .toc-list a { text-decoration: none; color: var(--link-color); font-size: 15px; padding-left: 10px; border-left: 3px solid transparent; transition: all 0.3s; }
+        .toc-list a:hover { color: var(--accent-black); border-left: 3px solid var(--primary-color); font-weight: bold; }
+
+        /* --- 右側主要內容 --- */
+        .main-content { padding: 60px 80px; max-width: 800px; margin: 0 auto; background-color: var(--white); }
+
+        h1 { font-size: 36px; font-weight: 700; margin-bottom: 20px; line-height: 1.4; }
+        
+        /* 子頁面用 H2 作為段落標題 */
+        h2 { 
+            font-size: 24px; 
+            margin-top: 50px; 
+            margin-bottom: 20px; 
+            font-weight: bold; 
+            color: #333; 
+            position: relative; 
+            padding-left: 15px; 
+            border-left: 5px solid var(--primary-color);
+            border-bottom: none; 
+        }
+        
+        p { font-size: 18px; margin-bottom: 24px; text-align: justify; }
+
+        /* --- 圖片與嵌入 --- */
+        figure { margin: 40px 0; width: 100%; }
+        img { width: 100%; height: auto; display: block; border-radius: 4px; }
+        figcaption { font-size: 14px; color: #666; margin-top: 10px; padding-bottom: 5px; border-bottom: 1px solid #ddd; display: inline-block; }
+
+        /* --- 引用區塊 --- */
+        blockquote { margin: 30px 0; padding: 20px; border-left: 5px solid var(--primary-color); font-size: 20px; font-family: 'Noto Serif TC', serif; font-weight: bold; color: var(--accent-black); line-height: 1.6; background-color: #fffdf0; }
+
+        /* --- 特殊結語區塊設計 --- */
+        .conclusion-box {
+            margin-top: 60px;
+            padding: 40px;
+            background-color: #222; 
+            color: #fff; 
+            border-radius: 8px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .conclusion-box h3 {
+            color: var(--primary-color); 
+            font-size: 22px;
+            margin-top: 0;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding-bottom: 15px;
+            display: inline-block;
+        }
+
+        .conclusion-box p {
+            font-size: 19px;
+            line-height: 1.8;
+            margin-bottom: 0;
+            color: #eee;
+        }
+
+        .conclusion-box::before {
+            content: "”";
+            position: absolute;
+            top: -20px;
+            right: 30px;
+            font-size: 120px;
+            color: rgba(253, 210, 2, 0.15);
+            font-family: serif;
+            line-height: 1;
+        }
+
+        /* Footer */
+        .site-footer { background-color: var(--accent-black); color: #bbb; padding: 30px 0; text-align: center; margin-top: auto; border-top: 4px solid var(--primary-color); }
+        .designer-name { color: var(--primary-color); font-weight: bold; }
+
+        /* RWD */
+        @media (max-width: 768px) {
+            .container { grid-template-columns: 1fr; }
+            .sidebar { display: none; }
+            .main-content { padding: 30px 20px; }
+            h1 { font-size: 28px; }
+            h2 { font-size: 22px; }
+            .conclusion-box { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-wrapper">
+        <div class="container">
+            <aside class="sidebar">
+                <div class="sticky-menu">
+                    <a href="index.html" class="back-btn">← 回首頁</a>
+
+                    <div class="toc-title">目錄</div>
+                    <nav class="toc-list">
+                        <a href="#liao-intro">廖啟帆：從偶像崇拜到瀕臨失望</a>
+                        <a href="#liao-mir">來自苗栗的政治啟蒙</a>
+                        <a href="#liao-giveup">差點放棄的那一年</a>
+                        <a href="#liao-716">716 遊行的震撼</a>
+                        <a href="#liao-join">入黨，是為了給它最後一次機會</a>
+                        <a href="#liao-star">沒有政治明星，還是能找回初衷</a>
+                    </nav>
+                </div>
+            </aside>
+
+            <article class="main-content">
+                
+                <h1>廖啟帆：從偶像崇拜到瀕臨失望，他在「全場噓聲」中看見了真正的時代力量</h1>
+                <p style="font-size: 14px; color: #888;">採訪撰稿／賴昀佳</p>
+                <hr style="border:0; border-top:2px solid var(--primary-color); margin: 20px 0 40px 0; opacity: 0.5;">
+
+                <div id="liao-intro">
+                    <figure>
+                        <img src="story/Liao/IMG_5295.jpg" onerror="this.src='https://via.placeholder.com/800x450?text=IMG_5295.jpg'" alt="廖啟帆">
+                        <figcaption>時代力量決策委員廖啟帆（中）、時代力量台中市黨部執行長鄒明諺（左）</figcaption>
+                    </figure>
+                    <p>廖啟帆，時代力量中非常年輕的一位決策委員，採訪的這天他身兼多職，親自站在門口迎接來參加活動的支持者，活動開始時帶著intercom裡外跑來跑去。</p>
+                    <p>他來自苗栗竹南，也是一名從太陽花運動時期就關注時力的資深支持者。</p>
+                    <p>從場外的熱情支持者到核心決策圈，過了十年。在他決定遞交入黨申請書的前一刻，其實是他對這個政黨感到最失望、甚至打算轉身離開的時候。</p>
+
+                    <h2 id="liao-mir">來自苗栗的政治啟蒙</h2>
+                    <figure>
+                        <img src="story/Liao/sunflower_mir.jpg" onerror="this.src='https://via.placeholder.com/800x450?text=sunflower_mir.jpg'" alt="太陽花學運">
+                        <figcaption>太陽花學運，左起為賴中強、黃國昌、林飛帆、陳為廷。翻攝自 鏡週刊。</figcaption>
+                    </figure>
+                    <p>廖啟帆的政治啟蒙源自太陽花運動。那時的他，看著林飛帆、陳為廷、黃國昌等人，抱著一種近乎「偶像崇拜」的心情。這份情感，很自然地投射到了後來成立的時代力量身上。</p>
+                    <p>這份渴望改變的動力，很大一部分來自他的家鄉——苗栗。「我們是 22 縣市裡唯一沒有政黨輪替過的」廖啟帆苦笑。對於一個苗栗青年而言，家鄉的政治是一塊鐵板。他和身邊關心政治的同儕都有著共同的焦慮與卑微的願望：我們苗栗有沒有機會不一樣？</p>
+
+                    <h2 id="liao-giveup">差點放棄的那一年</h2>
+                    <blockquote>「說直白一點，2023 年其實是我想要放棄時代力量的時候。」</blockquote>
+                    <p>隨著創黨元老黃國昌淡出黨務，廖啟帆卻感覺到，這個黨似乎陷入了一種怪異的狀態。雖然黃國昌名義上不在其位，但許多內情人都知道，這是一種「遙控」的狀態。在這種氛圍下，時代力量似乎失去了靈魂，變得面目模糊，與其他政黨越來越像。</p>
+                    <p>「這個黨跟我當初想的不一樣了。」那種曾經讓他熱血沸騰的獨特性正在消失。身為一個長期的支持者，他的心冷了，甚至已經做好了「脫粉」的準備。</p>
+                    <p>直到那個下午。</p>
+
+                    <h2 id="liao-716">差點放棄的那一年：716 遊行的震撼</h2>
+                    <p>2023 年 7 月 16 日，「公平正義救台灣」大遊行在凱道舉辦，這是一場由網紅館長和前立委黃國昌舉辦，打出了司法正義和居住正義的四球，並廣發邀請函給各個立法院黨團與各政黨總統參選人。</p>
+                    <p>「跟這些牛鬼蛇神站在一起的，算是什麼第三勢力？」</p>
+
+                    <figure>
+                        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+                            <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/HCabiBueVMk?start=8243" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                        <figcaption>716 遊行直播，王婉諭發言片段（2:17:23 開始）。</figcaption>
+                    </figure>
+
+                    <p>當時，時代力量黨主席王婉諭，跟同黨立委邱顯智、陳椒華，站在台上，她拿起了麥克風，罵民進黨欺騙選票還被網軍抹黑、批國民黨把居住正義當成選舉口號，話鋒一轉也直批當時準備要代表民眾黨參選總統的柯文哲和鍾東錦站在一起「跟這些魚肉鄉民站在一起的，算是什麼超越藍綠？」</p>
+                    <p>「所有明眼人都知道那是民眾黨的場子，結果妳在上面罵柯文哲？」廖啟帆看到了新聞片段，看傻了眼，隨之而來的是內心的震撼。</p>
+                    <p>那一刻，他確認了一件事：</p>
+                    <blockquote>「現在的時代力量，可能還有些什麼。」</blockquote>
+
+                    <h2 id="liao-join">入黨，是為了給它最後一次機會</h2>
+                    <figure>
+                        <img src="story/Liao/Liao_Group.jpg" onerror="this.src='https://via.placeholder.com/800x450?text=Liao_Group.jpg'" alt="廖啟帆入黨">
+                        <figcaption>2025 廖啟帆（後排右）當選決策委員。翻攝自 時代力量 臉書。</figcaption>
+                    </figure>
+                    <p>「既然我都支持這麼久了，在離開之前，為什麼不給它最後一個機會？」</p>
+                    <p>抱著這種「賭一把」的心情，廖啟帆在2023年決定直接正式入黨，他想親身走進這個組織，看看這群在逆風中堅持的人，究竟長什麼樣子。</p>
+                    <p>入黨後的半年，他投入了 2024 年的大選輔選。從苗栗的選前之夜到新竹的街頭掃票，他密集地與黨內的夥伴、志工相處。透過舉辦一場場的講座與工作坊，他驚訝地發現了一個悖論。</p>
+
+                    <h2 id="liao-star">沒有政治明星，還是能找回初衷</h2>
+                    <figure>
+                        <img src="story/Liao/Liao_2025_2.jpg" onerror="this.src='https://via.placeholder.com/800x450?text=Liao_2025_2.jpg'" alt="二次創黨">
+                        <figcaption>2025時代力量二次創黨記者會，廖啟帆（左）。翻攝自 自由時報，攝影 / 陳逸寬。</figcaption>
+                    </figure>
+                    <p>經過近距離的觀察，廖啟帆得出了一個令他自己都意外的結論：「現在的時代力量，反而跟十年前剛創黨時最像。」留下來的人開始踏實地對話，氣氛不再是劍拔弩張的攻防與內鬥，而是回到議題本身的討論，以及夥伴之間真實的互相關心。</p>
+                    
+                    <div class="conclusion-box">
+                        <h3>結語</h3>
+                        <p>褪去了偶像崇拜的濾鏡，廖啟帆在現在的時代力量身上，看見了比十年前更成熟、也更純粹的價值——那是一群不依賴明星光環，卻願意為了共同理想，在泥濘中手拉手前進的人。這一次，他不再只是崇拜，而是選擇了並肩同行。</p>
+                    </div>
+
+                </div>
+
+                <div style="height: 100px;"></div>
+            </article>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <p>專題設計：<span class="designer-name">賴昀佳</span></p>
+            <p style="margin-top: 10px; font-size: 12px; color: #888;">Copyright © 2025 All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // 平滑捲動效果
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
