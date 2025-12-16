@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>時代力量的過去與未來？</title>
+    <title>時代力量存在的價值？吸引你的是什麼？</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
@@ -22,7 +22,6 @@
         body {
             margin: 0;
             padding: 0;
-            /* 2. 這裡是設定全域字體的地方 */
             font-family: 'Noto Sans TC', sans-serif; 
             background-color: var(--bg-color);
             color: var(--text-color);
@@ -34,7 +33,6 @@
 
         /* --- 標題字體設定 --- */
         h1, h2, h3 {
-            /* 3. 這裡是設定標題字體的地方 (目前設定為襯線體: 宋體/明體風格) */
             font-family: 'Noto Serif TC', serif;
             color: var(--accent-black);
         }
@@ -54,7 +52,8 @@
         .main-content { padding: 60px 80px; max-width: 800px; margin: 0 auto; background-color: var(--white); }
 
         h1 { font-size: 36px; font-weight: 700; margin-bottom: 30px; line-height: 1.4; }
-        h2 { font-size: 28px; margin-top: 50px; margin-bottom: 20px; border-bottom: 3px solid var(--primary-color); padding-bottom: 10px; }
+        h2 { font-size: 28px; margin-top: 60px; margin-bottom: 20px; border-bottom: 3px solid var(--primary-color); padding-bottom: 10px; }
+        h3 { font-size: 22px; margin-top: 40px; margin-bottom: 15px; font-weight: bold; }
         p { font-size: 18px; margin-bottom: 24px; text-align: justify; }
 
         /* --- 圖片與嵌入 --- */
@@ -66,80 +65,136 @@
         /* --- 引用區塊 --- */
         blockquote { margin: 30px 0; padding-left: 20px; border-left: 5px solid var(--primary-color); font-size: 22px; font-family: 'Noto Serif TC', serif; font-weight: bold; color: var(--accent-black); line-height: 1.6; background-color: #fffdf0; padding: 20px; }
 
-        /* --- 特殊區塊：左圖右文 (新增) --- */
-        .side-by-side {
+        /* --- 手機通知動畫樣式 (王婉諭部分) --- */
+        .notification-container {
+            max-width: 400px;
+            margin: 40px auto;
+            position: relative;
+            perspective: 1000px;
+        }
+
+        .phone-mockup {
+            background: #000;
+            border-radius: 30px;
+            padding: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .phone-screen {
+            background: url('https://images.unsplash.com/photo-1550684848-fac1c5b4e853?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80') center/cover; /* 模糊背景 */
+            border-radius: 20px;
+            height: 300px;
+            position: relative;
+            overflow: hidden;
             display: flex;
-            gap: 40px;
-            align-items: center;
-            margin: 60px 0;
-            background-color: #fcfcfc;
-            padding: 20px;
-            border-radius: 8px;
+            justify-content: center;
+            align-items: center; /* 讓通知置中 */
         }
-        .side-img { flex: 1; }
-        .side-text { flex: 1; }
-        .side-text h3 { margin-top: 0; font-size: 24px; border-bottom: none; }
-        .side-text p { font-size: 16px; margin-bottom: 0; }
 
-        /* --- 特殊區塊：網路留言瀑布流 (新增) --- */
-        .comments-stream-container {
-            max-width: 500px; /* 限制寬度，模擬手機視窗感 */
-            margin: 60px auto;
-            padding: 40px 20px;
-            background: linear-gradient(180deg, rgba(255,255,255,0) 0%, #fffdf0 20%, #fffdf0 80%, rgba(255,255,255,0) 100%);
-            /* 背景融入，但給一點點黃色漸層增加氛圍 */
-        }
-        
-        .comment-card {
-            background: white;
+        /* 模擬 iOS 通知 */
+        .notification-banner {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             border-radius: 12px;
-            padding: 15px 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            border-left: 4px solid #ddd; /* 預設灰邊 */
-            opacity: 0; /* 初始隱藏 */
-            transform: translateY(50px) scale(0.95); /* 初始位置在下方且稍小 */
-            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* 彈性動畫 */
+            padding: 15px;
+            width: 90%;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            animation: slideDown 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            transform: translateY(-100px); /* 初始位置在螢幕外 */
+            opacity: 0;
         }
 
-        .comment-header {
-            font-size: 12px;
-            color: #999;
-            margin-bottom: 6px;
+        .notif-header {
             display: flex;
             justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
         }
 
-        .comment-body {
-            font-size: 16px;
-            color: #333;
-            line-height: 1.5;
-            font-weight: 500;
-        }
-
-        /* 觸發後的狀態 */
-        .comment-card.visible {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
-
-        /* 關鍵放大的那則留言 */
-        .comment-card.huge-impact {
-            border-left: 8px solid var(--primary-color); /* 變粗黃邊 */
-            background-color: #222; /* 變黑底 */
-        }
-        
-        .comment-card.huge-impact.visible {
-            transform: scale(1.15); /* 放大 1.15 倍 */
-            box-shadow: 0 10px 30px rgba(253, 210, 2, 0.3); /* 黃色光暈 */
-            z-index: 10; /* 浮在最上面 */
-        }
-
-        .comment-card.huge-impact .comment-body {
-            color: var(--primary-color); /* 黃字 */
-            font-size: 20px;
+        .notif-app-name {
+            font-size: 10px;
+            color: #666;
+            text-transform: uppercase;
             font-weight: bold;
         }
+        
+        .notif-time {
+            font-size: 10px;
+            color: #666;
+        }
+
+        .notif-title {
+            font-size: 13px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 2px;
+        }
+
+        .notif-message {
+            font-size: 13px;
+            color: #333;
+            line-height: 1.3;
+        }
+
+        @keyframes slideDown {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* --- 律師卡片式佈局 (Grid) --- */
+        .lawyer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin: 40px 0;
+        }
+
+        .lawyer-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .lawyer-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            filter: grayscale(100%); /* 預設黑白 */
+            transition: filter 0.3s ease;
+        }
+
+        .lawyer-name {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(253, 210, 2, 0.9); /* 黃色背景 */
+            color: #000;
+            font-size: 12px;
+            text-align: center;
+            padding: 5px 0;
+            transform: translateY(100%); /* 預設隱藏 */
+            transition: transform 0.3s ease;
+            font-weight: bold;
+        }
+
+        /* Hover 效果 */
+        .lawyer-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .lawyer-card:hover img {
+            filter: grayscale(0%); /* 變回彩色 */
+        }
+
+        .lawyer-card:hover .lawyer-name {
+            transform: translateY(0); /* 顯示名字 */
+        }
+
 
         /* Footer */
         .site-footer { background-color: var(--accent-black); color: #bbb; padding: 30px 0; text-align: center; margin-top: auto; border-top: 4px solid var(--primary-color); }
@@ -151,8 +206,8 @@
             .sidebar { display: none; }
             .main-content { padding: 30px 20px; }
             h1 { font-size: 28px; }
+            .phone-frame { width: 280px; height: 500px; }
             .side-by-side { flex-direction: column; gap: 20px; }
-            .comment-card.huge-impact.visible { transform: scale(1.05); /* 手機版放大倍率小一點以免破版 */ }
         }
     </style>
 </head>
@@ -162,110 +217,241 @@
         <div class="container">
             <aside class="sidebar">
                 <div class="sticky-menu">
-                    <div class="toc-title">目錄 CONTENTS</div>
+                    <div class="toc-title">CHAPTER 2</div>
                     <nav class="toc-list">
-                        <a href="#section1">1. 前言：小黨的困境</a>
-                        <a href="#section2">2. 時代力量：太陽花後的挑戰</a>
-                        <a href="#voices">3. 網路輿論觀察</a>
-                        <a href="#section3">4. 台灣基進：堅持理念</a>
-                        <a href="#section4">5. 親民黨：老牌政黨求生</a>
-                        <a href="#section5">6. 結語：多元聲音的未來</a>
+                        <a href="#intro">1. 他們為什麼選擇加入？</a>
+                        <a href="#wang">2. 王婉諭：從被溫暖感動...</a>
+                        <a href="#wang-call">--- 突如其來的電話</a>
+                        <a href="#wang-reason">--- 是什麼讓她義無反顧？</a>
+                        <a href="#wang-light">--- 最後一根浮木</a>
+                        <a href="#liao">3. 廖啟帆：從崇拜到噓聲</a>
+                        <a href="#liao-mir">--- 來自苗栗的啟蒙</a>
+                        <a href="#liao-giveup">--- 差點放棄的那一年</a>
+                        <a href="#lin">4. 林彥甫：誤打誤撞的專業</a>
+                        <a href="#lin-start">--- 誤打誤撞的起點</a>
+                        <a href="#lin-value">--- 撿起藍綠不碰的難題</a>
                     </nav>
                 </div>
             </aside>
 
             <article class="main-content">
-                <h1>小黨後戰國時代：藍綠白壓陣，時力、基進、親民黨力求突圍</h1>
+                <h1>CHAPTER 2 – 時代力量存在的價值？吸引你的是什麼？</h1>
                 
-                <p style="font-size: 14px; color: #555; font-weight: 500;">記者／賴昀佳 &nbsp; 攝影／XXX &nbsp; 設計／XXX</p>
+                <p style="font-size: 14px; color: #888;">記者／賴昀佳</p>
                 <hr style="border:0; border-top:2px solid var(--primary-color); margin: 20px 0 40px 0; opacity: 0.5;">
 
-                <div id="section1">
-                    <p><strong>台灣選舉制度不利於小黨生存，在藍綠白的壓縮下，其他小黨此次已面臨嚴峻的生存保衛戰。</strong>我們訪問時代力量、親民黨、台灣基進的重要幹部及學者，觀察他們面臨什麼困難？</p>
+                <div id="intro">
+                    <h2>他們為什麼選擇加入時代力量？</h2>
+                    <figure>
+                        <img src="https://via.placeholder.com/800x450?text=WangInt_LinLiaoBack.jpg" alt="WangInt_LinLiaoBack">
+                        <figcaption>翻攝自 時代力量 官網。</figcaption>
+                    </figure>
                 </div>
 
-                <figure>
-                    <img src="https://www.twreporter.org/images/20240104164643-008418ae6fc4e77d4d1f846422323e85-desktop.jpg" alt="圖片說明">
-                    <figcaption>台灣立委選舉制度自2008年改為單一選區兩票制，被視為不利於小黨生存。（攝影／黃世澤）</figcaption>
-                </figure>
+                <div id="wang">
+                    <h2>王婉諭 – 從被溫暖感動到「沒人要做，我就跳下來做」的政治之路</h2>
+                    <figure>
+                        <img src="https://via.placeholder.com/800x450?text=IMG_5287.HEIC" alt="王婉諭照片">
+                    </figure>
+                    <p>2016年，一場震驚社會的「小燈泡事件」，讓大眾記住了王婉諭。當時鏡頭前的她，強忍悲痛，冷靜而清晰地表達著一位母親的訴求。但真正讓她從一位受害者家屬，轉身踏入政治場域的關鍵，發生在三年後的某個午後。</p>
 
-                <div id="section2">
-                    <h2>背負太陽花學運期待，時力的進與退</h2>
-                    <p>2014年太陽花學運爆發後，激勵年輕世代參政與小黨力量崛起，時代力量是當時風潮中最具代表性的小黨。</p>
-                    
-                    <div class="side-by-side">
-                        <div class="side-img">
-                            <img src="https://via.placeholder.com/400x300?text=Interview" alt="採訪側拍">
+                    <h3 id="wang-call">一通突如其來的電話</h3>
+                    <p>將時間撥回 2019 年 11 月 11 日。那天，王婉諭像往常一樣開著車載著孩子，生活原本沿著以家庭為重心的軌道運行。突然，手機響起——打來的是時代力量。</p>
+                    <p>電話那頭傳來的訊息急促而直接：</p>
+
+                    <div class="notification-container">
+                        <div class="phone-mockup">
+                            <div class="phone-screen">
+                                <div class="notification-banner">
+                                    <div class="notif-header">
+                                        <span class="notif-app-name">時代力量</span>
+                                        <span class="notif-time">現在</span>
+                                    </div>
+                                    <div class="notif-title">急件通知</div>
+                                    <div class="notif-message">2020 年的不分區名單，女生的人數還不夠，妳有意願加入嗎？</div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="side-text">
-                            <h3>轉型的陣痛期</h3>
-                            <p>從街頭走向國會，時代力量面臨著路線的辯論與人才的流失。在多次退黨潮後，留下來的人試圖重新定義政黨價值。</p>
+                        <figcaption style="display:block; text-align:center; margin-top:10px;">手機模擬示意</figcaption>
+                    </div>
+
+                    <p>王婉諭立刻將車停在路邊，她撥了幾通電話給家人。在家人的鼓勵之下，短短的兩三個小時內，她做出了那個徹底改寫人生的決定，決定加入。</p>
+                    <p>一切發生得太快，當時時代力量告訴她：「明天就要辦不分區記者會。」那天晚上，王婉諭翻箱倒櫃，找出一套許久未穿的正裝，最後決定上陣的服裝「連褲子都扣不太起來」，她笑著回憶。</p>
+                    <p>帶著那件緊繃的褲子與一顆忐忑的心，王婉諭就這樣匆促地被推上了政治舞台。</p>
+
+                    <figure>
+                        <img src="https://via.placeholder.com/800x450?text=Wang_nominated.jpg" alt="提名記者會">
+                        <figcaption>2020提名記者會的王婉諭（右，第三名）、黃國昌（左，第四名）。翻攝自 民視新聞，攝影 / 欒秉宙）</figcaption>
+                    </figure>
+
+                    <h3 id="wang-reason">是什麼讓她義無反顧？</h3>
+                    <p>對於當時對各大政黨生態幾乎一無所知的王婉諭來說，讓她點頭的理由，不是想到政治人物能有多光鮮亮麗，而是一份深厚的「情義」。</p>
+                    <p>促使她答應的關鍵，是曾威凱、陳孟秀、丁穩勝、李宣毅——這群當時協助她的律師們。在小燈泡事件後的漫漫長夜，無論是令人心碎的官司攻防，還是推動司法改革國是會議的艱難時刻，是這群人陪著她走過最難熬的時光。</p>
+
+                    <div class="lawyer-grid">
+                        <div class="lawyer-card">
+                            <img src="https://via.placeholder.com/150x150?text=Lee" alt="李宣毅">
+                            <div class="lawyer-name">李宣毅</div>
+                        </div>
+                        <div class="lawyer-card">
+                            <img src="https://via.placeholder.com/150x150?text=Meng" alt="陳孟秀">
+                            <div class="lawyer-name">陳孟秀</div>
+                        </div>
+                        <div class="lawyer-card">
+                            <img src="https://via.placeholder.com/150x150?text=Ding" alt="丁穩勝">
+                            <div class="lawyer-name">丁穩勝</div>
+                        </div>
+                        <div class="lawyer-card">
+                            <img src="https://via.placeholder.com/150x150?text=Tseng" alt="曾威凱">
+                            <div class="lawyer-name">曾威凱</div>
                         </div>
                     </div>
+                    <figcaption>曾威凱、陳孟秀、丁穩勝、李宣毅律師。翻攝自芋傳媒。</figcaption>
 
                     <blockquote>
-                        「從社運出來的政黨不可能去喊要死刑、核能甚至支持服貿，就被民眾黨極大壓縮生存空間。」——吳崢
+                        「我很認同他們，因為是他們陪伴我們這些人，度過了那些最辛苦的時刻。」
                     </blockquote>
+                    <p>對王婉諭而言，這不是加入一個政黨，而是與一群曾經共患難的戰友，繼續並肩作戰。她看見了這群人眼中想要改變社會的光，而她決定成為那道光的一部分。</p>
 
-                    <p>曾分別以時代力量、無黨籍身分競選台北市議員的太陽花學運要角吳崢，在歷經兩次失敗後，於去年5月正式加入民進黨。</p>
+                    <h3 id="wang-light">成為無助者的最後一根浮木</h3>
+                    <figure>
+                        <img src="https://via.placeholder.com/800x450?text=Wang_light.jpg" alt="王婉諭臉書照片">
+                        <figcaption>翻攝自 王婉諭 臉書</figcaption>
+                    </figure>
+                    <p>走過了那段最痛的路，王婉諭比誰都清楚「無助」的滋味。這也成為了她四年立委生涯中，最核心的價值導向。</p>
+                    <p>在國會的四年裡，王婉諭辦公室接到的陳情案，往往帶著一種絕望的氣息。這些陳情人通常已經找遍了各大政黨的民意代表，卻因為案子太棘手、太難起訴，或者沒有新聞熱度而被拒之門外。</p>
+                    <p>「時代力量，是他們最後的浮木。」</p>
+                    <p>王婉諭清晰地記得一位遭到權勢性侵的被害人。當權力的高牆壓得受害者喘不過氣，所有人都勸這名受害者放棄時，只有時代力量選擇接住他。團隊陪著當事人一步步走過訴訟的泥淖，直到事後，當事人含著淚對她說：「如果不是你們，我可能真的會走上絕路。」</p>
+                    <p>這句話，像烙印一樣刻在王婉諭心裡。</p>
+
+                    <h3>「你們不在了，我們還能找誰？」</h3>
+                    <figure>
+                        <img src="https://via.placeholder.com/800x450?text=Wang_door.jpg" alt="卸任前合照">
+                        <figcaption>王婉諭卸任前和研究室的合照。翻攝自 王婉諭 臉書</figcaption>
+                    </figure>
+                    <p>政治是殘酷的。2024 年大選，時代力量無緣續留國會。當落選已成定局，最讓王婉諭感到心痛的，不是失去立委的光環，而是一位陳情人無助的提問：</p>
+                    <p>「如果你們不在立法院了，以後我們遇到這種事，還可以找誰協助？」</p>
+                    <p>那一刻，她答不上來。在語塞的背後，是深深的擔憂與不捨。她知道，社會角落裡還有太多求助無門的人，正等待著有人願意為了他們，去對抗體制的巨獸。</p>
+                    <p>即便卸下了立委身份，至今仍有許多走投無路的人，循著舊日的信任找到王婉諭、找到時代力量。這份信任，證明了這個政黨存在的特殊價值，那就是去接住那些被主流社會遺漏的人。</p>
+                    <p><strong>結語：</strong>從那件扣不上的西裝褲開始，王婉諭走了很遠。如今的她，目光望向 2028 年。她想帶領時代力量重回國會，只為了當下一次有人在絕望中呼救時，那裡還有一根願意承接所有重量的浮木。而這，也是她認為時代力量應該存在的一個價值。</p>
                 </div>
 
-                <div id="voices" style="text-align: center; margin-top: 80px;">
-                    <h3 style="color:#999; font-size: 16px; border:none;">▼ 網路社群的真實聲音</h3>
+                <hr style="border:0; border-top:1px solid #eee; margin: 40px 0;">
+
+                <div id="liao">
+                    <h2>廖啟帆 - 從偶像崇拜到瀕臨失望，他在「全場噓聲」中看見了真正的時代力量</h2>
+                    <figure>
+                        <img src="https://via.placeholder.com/800x450?text=IMG_5295.HEIC" alt="廖啟帆">
+                        <figcaption>時代力量決策委員廖啟帆（中）、時代力量台中市黨部執行長鄒明諺（左）</figcaption>
+                    </figure>
+                    <p>廖啟帆，時代力量中非常年輕的一位決策委員，採訪的這天他身兼多職，親自站在門口迎接來參加活動的支持者，活動開始時帶著intercom裡外跑來跑去。</p>
+                    <p>他來自苗栗竹南，也是一名從太陽花運動時期就關注時力的資深支持者。</p>
+                    <p>從場外的熱情支持者到核心決策圈，過了十年。在他決定遞交入黨申請書的前一刻，其實是他對這個政黨感到最失望、甚至打算轉身離開的時候。</p>
+
+                    <h3 id="liao-mir">來自苗栗的政治啟蒙</h3>
+                    <figure>
+                        <img src="https://via.placeholder.com/800x450?text=sunflower_mir.jpg" alt="太陽花學運">
+                        <figcaption>太陽花學運，左起為賴中強、黃國昌、林飛帆、陳為廷。翻攝自 鏡週刊。</figcaption>
+                    </figure>
+                    <p>廖啟帆的政治啟蒙源自太陽花運動。那時的他，看著林飛帆、陳為廷、黃國昌等人，抱著一種近乎「偶像崇拜」的心情。這份情感，很自然地投射到了後來成立的時代力量身上。</p>
+                    <p>這份渴望改變的動力，很大一部分來自他的家鄉——苗栗。「我們是 22 縣市裡唯一沒有政黨輪替過的」廖啟帆苦笑。對於一個苗栗青年而言，家鄉的政治是一塊鐵板。他和身邊關心政治的同儕都有著共同的焦慮與卑微的願望：我們苗栗有沒有機會不一樣？</p>
+
+                    <h3 id="liao-giveup">差點放棄的那一年</h3>
+                    <blockquote>「說直白一點，2023 年其實是我想要放棄時代力量的時候。」</blockquote>
+                    <p>隨著創黨元老黃國昌淡出黨務，廖啟帆卻感覺到，這個黨似乎陷入了一種怪異的狀態。雖然黃國昌名義上不在其位，但許多內情人都知道，這是一種「遙控」的狀態。在這種氛圍下，時代力量似乎失去了靈魂，變得面目模糊，與其他政黨越來越像。</p>
+                    <p>「這個黨跟我當初想的不一樣了。」那種曾經讓他熱血沸騰的獨特性正在消失。身為一個長期的支持者，他的心冷了，甚至已經做好了「脫粉」的準備。</p>
+                    <p>直到那個下午。</p>
+
+                    <h3>差點放棄的那一年</h3>
+                    <p>2023 年 7 月 16 日，「公平正義救台灣」大遊行在凱道舉辦，這是一場由網紅館長和前立委黃國昌舉辦，打出了司法正義和居住正義的四球，並廣發邀請函給各個立法院黨團與各政黨總統參選人。</p>
+                    <p>「跟這些牛鬼蛇神站在一起的，算是什麼第三勢力？」</p>
+
+                    <figure>
+                        <iframe width="100%" height="450" src="https://www.youtube.com/embed/HCabiBueVMk?start=8243" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <figcaption>716 遊行，2:17:23 處開始</figcaption>
+                    </figure>
+
+                    <p>當時，時代力量黨主席王婉諭，跟同黨立委邱顯智、陳椒華，站在台上，她拿起了麥克風，罵民進黨欺騙選票還被網軍抹黑、批國民黨把居住正義當成選舉口號，話鋒一轉也直批當時準備要代表民眾黨參選總統的柯文哲和鍾東錦站在一起「跟這些魚肉鄉民站在一起的，算是什麼超越藍綠？」</p>
+                    <p>「所有明眼人都知道那是民眾黨的場子，結果妳在上面罵柯文哲？」廖啟帆看到了新聞片段，看傻了眼，隨之而來的是內心的震撼。</p>
+                    <p>那一刻，他確認了一件事：</p>
+                    <blockquote>「現在的時代力量，可能還有些什麼。」</blockquote>
+
+                    <h3>入黨，是為了給它最後一次機會</h3>
+                    <figure>
+                        <img src="https://via.placeholder.com/800x450?text=Liao_Group.jpg" alt="廖啟帆當選">
+                        <figcaption>2025 廖啟帆（後排右）當選決策委員。翻攝自 時代力量 臉書。</figcaption>
+                    </figure>
+                    <p>「既然我都支持這麼久了，在離開之前，為什麼不給它最後一個機會？」</p>
+                    <p>抱著這種「賭一把」的心情，廖啟帆在2023年決定直接正式入黨，他想親身走進這個組織，看看這群在逆風中堅持的人，究竟長什麼樣子。</p>
+                    <p>入黨後的半年，他投入了 2024 年的大選輔選。從苗栗的選前之夜到新竹的街頭掃票，他密集地與黨內的夥伴、志工相處。透過舉辦一場場的講座與工作坊，他驚訝地發現了一個悖論。</p>
+
+                    <h3>沒有政治明星，還是能找回初衷</h3>
+                    <figure>
+                        <img src="https://via.placeholder.com/800x450?text=Liao_2025_2.jpg" alt="二次創黨">
+                        <figcaption>2025時代力量二次創黨記者會，廖啟帆（左）。翻攝自 自由時報，攝影 / 陳逸寬。</figcaption>
+                    </figure>
+                    <p>經過近距離的觀察，廖啟帆得出了一個令他自己都意外的結論：「現在的時代力量，反而跟十年前剛創黨時最像。」留下來的人開始踏實地對話，氣氛不再是劍拔弩張的攻防與內鬥，而是回到議題本身的討論，以及夥伴之間真實的互相關心。</p>
+                    <p>褪去了偶像崇拜的濾鏡，廖啟帆在現在的時代力量身上，看見了比十年前更成熟、也更純粹的價值——那是一群不依賴明星光環，卻願意為了共同理想，在泥濘中手拉手前進的人。這一次，他不再只是崇拜，而是選擇了並肩同行。</p>
                 </div>
-                
-                <div class="comments-stream-container">
-                    <div class="comment-card">
-                        <div class="comment-header"><span>@TaipeiVoter</span><span>3分鐘前</span></div>
-                        <div class="comment-body">這幾年小黨真的越來越難生存了，感覺聲音都被淹沒。</div>
-                    </div>
 
-                    <div class="comment-card">
-                        <div class="comment-header"><span>@PoliticsWatcher</span><span>5分鐘前</span></div>
-                        <div class="comment-body">其實我很想投給第三勢力，但又怕變廢票...好掙扎😫</div>
-                    </div>
+                <hr style="border:0; border-top:1px solid #eee; margin: 40px 0;">
 
-                    <div class="comment-card huge-impact">
-                        <div class="comment-header"><span>@YoungGeneration</span><span>熱門留言 🔥</span></div>
-                        <div class="comment-body">如果我們每次都含淚投票，改變永遠不會發生！多元的聲音才是民主的價值！</div>
-                    </div>
+                <div id="lin">
+                    <h2>林彥甫</h2>
+                    <figure>
+                        <img src="https://via.placeholder.com/800x450?text=Lin_cover.jpeg" alt="林彥甫">
+                        <figcaption>翻攝自 林彥甫 臉書。</figcaption>
+                    </figure>
+                    <p>林彥甫，時代力量新竹市議員，同時也是新竹市議會時力黨團總召。他在 2018 年首次參選便以 3571 票當選，2022 年票數成長，拿到了 4926 票，成功連任。</p>
+                    <p>相較於許多帶著熱血與憤慨投身政治的青年，林彥甫加入時力的起點顯得比較偶然。剛從美國拿下公共行政碩士，誤打誤撞進入了政治叢林。</p>
+                    <p>然而，正是這份「冷靜」與「專業」，讓他在喧嘩的政治攻防中，看見了時代力量最無可取代的位置——那個願意彎腰撿起別人眼中「麻煩事」的地方。</p>
 
-                    <div class="comment-card">
-                        <div class="comment-header"><span>@Sunflower2014</span><span>12分鐘前</span></div>
-                        <div class="comment-body">時代力量加油啊，不要忘記初衷。</div>
-                    </div>
+                    <h3 id="lin-start">誤打誤撞的起點</h3>
+                    <figure>
+                        <img src="https://via.placeholder.com/800x450?text=Lin_Chiu2018.jpg" alt="林彥甫與邱顯智">
+                        <figcaption>2018時第一次參選的林彥甫與新竹市黨部主委邱顯智。翻攝自 時代力量新竹市黨部 臉書。</figcaption>
+                    </figure>
+                    <blockquote>「坦白說，加入之前我並不是那種『非時代力量不可』的人。」</blockquote>
+                    <p>回憶起 2016 年 10 月加入時力的契機，林彥甫坦承自己當時對這個政黨不甚了解，更談不上狂熱。那時的他剛從美國留學歸國，正處於職涯的探索期。因為昔日清大老師的一句邀約：「有沒有興趣來新竹黨部試試看？」他便抱著試試看的心態，成為了一名黨部的研究助理。</p>
+                    <p>當時的他只隱約覺得，太陽花學運後，台灣社會似乎需要一股有別於藍綠的新可能性。但他沒想到的是，這個「試試看」的決定，讓他遇見了當時的新竹黨部主委邱顯智，也讓他真正見識到所謂的「新政治」長什麼樣子。</p>
 
-                     <div class="comment-card">
-                        <div class="comment-header"><span>@Neutral_One</span><span>20分鐘前</span></div>
-                        <div class="comment-body">藍綠以外的選擇真的很重要，國會需要防腐劑。</div>
-                    </div>
-                </div>
-
-
-                <div id="section3">
-                    <h2>台灣基進北上打天下，強調小黨存在的必要性</h2>
-                    <p>在2016年正式登記的台灣基進，和時代力量一樣是年輕政黨。2020年首次進軍國會選舉，就由「3Q」陳柏惟擊敗國民黨籍候選人顏寬恒取得台中區域立委席次。</p>
+                    <h3>「這個案子太複雜了，不要接啦」：公道三的啟示</h3>
+                    <figure>
+                        <img src="https://via.placeholder.com/800x450?text=Dao3_2020.jpg" alt="公道三案">
+                        <figcaption>林彥甫（右）至內政部前抗議公道三案。翻攝自 公民行動影音紀錄資料庫。</figcaption>
+                    </figure>
+                    <p>當時新竹市面臨極具爭議的「公道三」道路徵收案。該案涉及複雜的都市計畫法規、土地徵收條例，還有難解的交通動線規劃。黨部內外的聲音幾乎一面倒地勸阻：「這太複雜了，而且吃力不討好，不要接。」</p>
+                    <p>但看著致力於為弱勢發聲的邱顯智，以及那些求助無門的拆遷戶，當時對政治攻防還很陌生的林彥甫，單純覺得案子在程序正義上似乎有瑕疵，心想：「為什麼不試試看？」</p>
+                    <p>他發揮了在國外所學的公共行政專業，一頭鑽進法條與公文堆裡。然而，當他陪著迫遷戶去內政部開會、去行政院陳情時，他驚訝地發現了一個政治圈的怪現象：在討論如此高度專業的議題時，大多數民意代表的反應卻極其單薄，往往只剩下「支持」、「反對」與「衝啊」的激情喊話。</p>
+                    <blockquote>「原來，『專業』在當前的政治領域裡是如此缺乏。」</blockquote>
                     
                     <figure>
-                        <div class="flourish-embed flourish-parliament" data-src="visualisation/26700264">
-                            <script src="https://public.flourish.studio/resources/embed.js"></script>
-                            <noscript><img src="https://public.flourish.studio/visualisation/26700264/thumbnail" width="100%" alt="parliament visualization" /></noscript>
-                        </div>
-                        <figcaption>
-                            圖表說明：這裡是可以填寫 Flourish 圖表說明的空間。請敘述數據來源或圖表重點。
-                        </figcaption>
+                         <img src="https://via.placeholder.com/800x450?text=Dao3_FB.png" alt="洪箱與林彥甫">
+                        <figcaption>農民女俠「洪箱」、反徵收戶鄭麗雲、新竹市議員林彥甫。翻攝自 林彥甫 臉書。</figcaption>
                     </figure>
-                    <p>吳欣岱在接受訪問時回顧上半年選戰策略的討論，她指出過程中幹部們並沒有太多衝突，大家很快達成共識。</p>
-                </div>
 
-                <div id="section4">
-                    <h2>親民黨：宋楚瑜在改變，台灣需要煞車者</h2>
-                    <p>新興小黨載浮載沉，老牌政黨親民黨同樣面臨生存危機。不同的是，親民黨曾經叱咤風雲，2001年創黨後首次投入國會選舉中就獲得46席立委。</p>
-                </div>
+                    <h3>看見「專業」的缺席 投入參選</h3>
+                    <p>在黨部當助理不到一年，主任便問了林彥甫有沒有興趣參選議員。</p>
+                    <p>「那時候覺得滿瘋狂的。」林彥甫說，通常大家都是助理歷練許久後，才慢慢討論參選的可能性，但他沒想那麼多，「覺得有機會就試試看好了」。最後，他順利拿下 3,000 多票當選。</p>
+                    <p>雖然第一任議員的任期讓他感到「疲於奔命」，因為要在只有三席議員的劣勢下，透過黨團力量進行專業的議事攻防，但又要應付傳統政治文化中排山倒海的紅白帖與選民服務。</p>
+                    <p>但也正是在這段過程中，他確立了時代力量存在的意義。</p>
+                    <figure>
+                        <img src="https://via.placeholder.com/800x450?text=Lin_elect_2018.png" alt="市場拜票">
+                        <figcaption>林彥甫2018競選時在市場拜票。翻攝自 菜市場政治學。</figcaption>
+                    </figure>
 
-                <div id="section5">
-                    <h2>結語：多元聲音的未來</h2>
-                    <p>當社會運動浪潮褪去，亦或是政黨明星光環褪色，相應而生的小黨都必然遭遇嚴酷生存挑戰。這次大選之後，台灣政治生態會更朝著責任政治或是多元代表方向前進，端看選民的抉擇。</p>
+                    <h3 id="lin-value">撿起藍綠都不碰的難題</h3>
+                    <p>時代力量吸引人的價值是什麼？林彥甫的答案很務實，也很沉重。</p>
+                    <blockquote>「會來找時代力量陳情的，通常都是找過藍綠兩黨卻沒有回應，或者是被認為『太困難、太麻煩』而被拒絕的案子。」</blockquote>
+                    <p>在林彥甫眼裡，時代力量必須存在的角色就是幫助這些沒人為他們說話的人。無論是因為議題太過複雜（如公道三案），或是當事人處於權力結構的最底層，甚至是因為議題本身太具爭議性、會掉票（如廢死、性別平權），導致兩大黨為了選舉考量而選擇迴避。</p>
+                    <p>「幫真的需要被服務的人，讓他們覺得有一個政黨或者是民意代表願意陪伴他們」</p>
+                    
+                    <figure>
+                         <img src="https://via.placeholder.com/800x450?text=IMG_5940.HEIC" alt="視訊訪問">
+                        <figcaption>林彥甫接受視訊訪問。</figcaption>
+                    </figure>
+
+                    <p><strong>結語：</strong>從一個誤打誤撞的留美碩士，到站在議會質詢台上的議員，林彥甫證明了：小黨的存在，不是為了在藍綠的夾縫中求生存，而是為了確保那些被二元對立所遺忘的聲音，依然有人願意為了他們，翻開厚重的法條、一疊又一疊的公文資料，找出解決的可能。</p>
                 </div>
 
                 <div style="height: 60px;"></div> 
@@ -275,35 +461,16 @@
 
     <footer class="site-footer">
         <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
-            <p>專題設計：<span class="designer-name">您的名字</span></p>
+            <p>專題設計：<span class="designer-name">賴昀佳</span></p>
             <p style="margin-top: 10px; font-size: 12px; color: #888;">Copyright © 2025 All Rights Reserved.</p>
         </div>
     </footer>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.15 // 當物件出現 15% 時觸發
-            };
-
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach((entry, index) => {
-                    if (entry.isIntersecting) {
-                        // 加上延遲，讓它們一個接一個出來
-                        setTimeout(() => {
-                            entry.target.classList.add('visible');
-                        }, index * 200); // 每個間隔 200ms
-                        observer.unobserve(entry.target); // 出現後就不再偵測
-                    }
-                });
-            }, observerOptions);
-
-            const comments = document.querySelectorAll('.comment-card');
-            comments.forEach(comment => {
-                observer.observe(comment);
-            });
+            // ... (原本的 Observer code 留著，如果有用到留言板的話) ...
+            
+            // 這裡可以加入簡單的 JS 讓卡片 Hover 時更平滑，但 CSS 已經處理大部分了
         });
     </script>
 
