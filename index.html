@@ -75,6 +75,15 @@
             padding-bottom: 8px;
             display: inline-block;
         }
+        
+        /* H4: 小標題 (對應 ###) */
+        h4 {
+            font-size: 20px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            color: #555;
+        }
 
         p { font-size: 18px; margin-bottom: 24px; text-align: justify; }
 
@@ -82,9 +91,64 @@
         figure { margin: 40px 0; width: 100%; }
         img { width: 100%; height: auto; display: block; border-radius: 4px; }
         figcaption { font-size: 14px; color: #666; margin-top: 10px; padding-bottom: 5px; border-bottom: 1px solid #ddd; display: inline-block; }
+        .flourish-embed { width: 100% !important; margin: 40px 0; }
 
         /* --- 引用區塊 --- */
         blockquote { margin: 30px 0; padding: 20px 30px; border-left: 5px solid var(--primary-color); background-color: #fffdf0; font-size: 20px; font-family: 'Noto Serif TC', serif; font-weight: bold; color: var(--accent-black); }
+
+        /* --- 法典風格框框 --- */
+        .law-box {
+            border: 2px solid #333;
+            padding: 20px;
+            margin: 40px 0;
+            background-color: #fcfcfc;
+            font-family: 'Noto Serif TC', serif;
+            box-shadow: 4px 4px 0px rgba(0,0,0,0.1);
+        }
+        .law-title {
+            font-weight: bold;
+            font-size: 18px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            text-align: center;
+            background-color: #eee;
+            padding-top: 5px;
+        }
+        .law-content { font-size: 16px; line-height: 1.8; color: #333; }
+
+        /* --- 提問樣式 --- */
+        .question-box {
+            font-size: 20px;
+            font-weight: bold;
+            color: #000;
+            background-color: var(--primary-color);
+            padding: 10px 20px;
+            border-radius: 4px; /* 方一點 */
+            margin: 40px 0 20px 0;
+            display: inline-block;
+            box-shadow: 3px 3px 0 #333;
+        }
+
+        /* --- 強調字樣式 --- */
+        .highlight-text {
+            background: linear-gradient(to top, rgba(253, 210, 2, 0.6) 40%, transparent 40%);
+            font-weight: bold;
+            padding: 0 2px;
+        }
+
+        /* --- 大問題 (Big Question) --- */
+        .big-question {
+            font-size: 22px;
+            font-weight: bold;
+            line-height: 1.6;
+            margin: 60px 0;
+            padding: 40px;
+            border: 4px solid var(--primary-color);
+            text-align: center;
+            color: #333;
+            background-color: #fff;
+        }
 
         /* --- 手機留言動畫區塊 --- */
         .phone-comment-section {
@@ -199,10 +263,7 @@
             transform: translateY(50px) scale(0.9);
         }
 
-        /* 用於觸發動畫的 class */
         .news-card.show { opacity: 1; }
-        
-        /* 堆疊層次 */
         .news-1.show { transform: translateY(0) scale(1) rotate(-3deg); z-index: 1; }
         .news-2.show { transform: translateY(20px) scale(1) rotate(2deg); z-index: 2; transition-delay: 0.3s; }
         .news-3.show { transform: translateY(40px) scale(1) rotate(-1deg); z-index: 3; transition-delay: 0.6s; }
@@ -314,8 +375,13 @@
                 <div class="sticky-menu">
                     <div class="toc-title">專題導覽</div>
                     <nav class="toc-list">
-                        <a href="#join-reason">2. 為什麼選擇加入時代力量？</a>
-                        <a href="#voices">3. 網路的聲音？</a>
+                        <a href="#status">1. 時代力量的現狀</a>
+                        <a href="#voices">2. 網路的聲音？</a>
+                        <a href="#confrontation">直球對決藍白粉</a>
+                        <a href="#green-anxiety">直球對決綠營焦慮</a>
+                        <a href="#hsinchu-lab">新竹實驗室</a>
+                        <a href="#third-way">預算審查的第三條路</a>
+                        <a href="#stories">3. 人物故事</a>
                         <a href="#future-road">4. 未來的路，怎麼走？</a>
                     </nav>
                 </div>
@@ -327,30 +393,62 @@
                 <p style="font-size: 14px; color: #888;">記者／賴昀佳</p>
                 <hr style="border:0; border-top:2px solid var(--primary-color); margin: 20px 0 40px 0; opacity: 0.5;">
 
-                <div id="join-reason">
-                    <h2>他們為什麼選擇加入時代力量？</h2>
-                    <figure>
-                        <img src="story/WangInt_LinLiaoBack.jpg" onerror="this.src='https://via.placeholder.com/800x450?text=WangInt_LinLiaoBack.jpg'" alt="時代力量">
-                        <figcaption>翻攝自 時代力量 官網。</figcaption>
-                    </figure>
-                </div>
-
-                <div id="stories">
-                    <h3 style="margin-top: 40px; margin-bottom: 20px; color: #666; font-size: 18px; border:none;">點擊人物閱讀故事：</h3>
+                <div id="status">
+                    <h2>時代力量的現狀</h2>
+                    <p>時代力量在2025年邁入創黨的第十年，許多人對於她從太陽花運動起家耳熟能詳，「黃國昌」、「林昶佐」、「洪慈庸」、「邱顯智」這些一度是時代力量政治明星的名字也不陌生。隨著時代的推移，這個黨面臨了多次的退黨潮與路線之爭。究竟時代力量的現況是什麼，我們一起從數字來看：</p>
                     
-                    <div class="netflix-container">
-                        <a href="wang.html" class="netflix-card">
-                            <img src="NF/Wang_NF.png" onerror="this.src='https://via.placeholder.com/300x450?text=Wang_NF.png'" alt="王婉諭的故事">
-                        </a>
+                    <p>從黨員人數來說，</p>
+                    <div class="flourish-embed flourish-chart" data-src="visualisation/26849333"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/26849333/thumbnail" width="100%" alt="chart visualization" /></noscript></div>
+                    <figcaption>時代力量歷年年底黨員人數。資料來源 / 2024 時代力量年度報告，製圖 / 賴昀佳</figcaption>
 
-                        <a href="liao.html" class="netflix-card">
-                            <img src="NF/Liao_NF.png" onerror="this.src='https://via.placeholder.com/300x450?text=Liao_NF.png'" alt="廖啟帆的故事">
-                        </a>
+                    <p>就長期趨勢來看，黨員是逐步減少的。2023 年受到退黨潮影響，跌到谷底（global minimum）僅剩 715 人。2024 年選後離開立院，但黨員人數反彈回 909 人。</p>
 
-                        <a href="lin.html" class="netflix-card">
-                            <img src="NF/Lin_NF.png" onerror="this.src='https://via.placeholder.com/300x450?text=Lin_NF.png'" alt="林彥甫的故事">
-                        </a>
+                    <div class="question-box">黨員人數多寡是重點嗎？</div>
+
+                    <p>在時力自己的檢討報告書中提到黨員過少會有兩大問題：<span class="highlight-text">選舉多元性不足、地方黨部主委沒辦法透過在地黨員直選出來。</span></p>
+
+                    <p>在目前現有黨員的 909 人之中，其中有490人是今年入黨的。也就是說現在時力黨內每兩個人就有一個是今年才剛剛加入的。</p>
+                    
+                    <div class="flourish-embed flourish-pictogram" data-src="visualisation/26855413"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/26855413/thumbnail" width="100%" alt="pictogram visualization" /></noscript></div>
+                    <figcaption>資料來源 / 2024 時代力量年度報告，製圖 / 賴昀佳</figcaption>
+
+                    <p>從另一個角度來講，過去的黨員在時力待著的時間並不長，在有加入過時力的黨員中，七個人裡面有六個人離開了。平均來說，他們從加入到退黨，僅僅三年時間。</p>
+
+                    <div class="flourish-embed flourish-pictogram" data-src="visualisation/26832743"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/26832743/thumbnail" width="100%" alt="pictogram visualization" /></noscript></div>
+                    <figcaption>資料來源 / 時代力量檢討報告，製圖 / 賴昀佳</figcaption>
+
+                    <p>從大選結果來看，</p>
+                    <div class="flourish-embed" data-src="story/3493663"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/story/3493663/thumbnail" width="100%" alt="visualization" /></noscript></div>
+                    <figcaption>資料來源 / 中央選舉委員會，製圖 / 賴昀佳</figcaption>
+                    
+                    <p>時代力量從橫掃五席進入國會，一路到在 2024 黯然離開。</p>
+                    <p>這很直接的反應到了財源上面，根據政黨法規定：</p>
+
+                    <div class="law-box">
+                        <div class="law-title">政黨法 第 22 條</div>
+                        <div class="law-content">
+                            I 主管機關對於最近一次全國不分區及僑居國外國民立法委員選舉得票率達百分之三以上之政黨，應編列年度預算補助之。<br>
+                            II 前項補助，依最近一次全國不分區及僑居國外國民立法委員選舉各該政黨得票數計算之，每年每票補助新臺幣五十元，並按會計年度由主管機關核算補助金額，通知政黨於二個月內掣據向主管機關領取，至該屆立法委員任期屆滿為止。
+                        </div>
                     </div>
+
+                    <p>2024 大選中，時力拿下 2.57 %：</p>
+                    <div class="flourish-embed flourish-chart" data-src="visualisation/26855509"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/26855509/thumbnail" width="100%" alt="chart visualization" /></noscript></div>
+                    <figcaption>資料來源 / 中央選舉委員會，製圖 / 賴昀佳</figcaption>
+
+                    <p>不但未能分配不分區席次，也代表著過去每票50元的政黨補助款也拿不到了。</p>
+                    <p>近五年的收入結構：</p>
+                    
+                    <div class="flourish-embed flourish-chart" data-src="visualisation/26849579"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/26849579/thumbnail" width="100%" alt="chart visualization" /></noscript></div>
+                    <figcaption>資料來源 / 時代力量檢討報告 及 2024時代力量年度報告，製圖 / 賴昀佳</figcaption>
+
+                    <p>過去的收入是相當仰賴政黨補助款的，但到了2024直接腰斬後整體收入大幅減少。但從政治現金收入來看，實際上是有增加的，而且還是2020年來的新高。</p>
+
+                    <div class="big-question">
+                        在時代力量黨員流失、財源也大幅縮減的情況下，是什麼讓他們覺得應該支撐下去？面對藍綠白三強鼎立的政治版圖夾殺下，又有什麼生存策略？
+                    </div>
+
+                    <div class="big-text">我訪問了時代力量黨主席王婉諭、決策委員廖啟帆、新竹市議員林彥甫，想知道對於他們來說，他們加入時力的初衷是什麼？以及什麼是時代力量不可取代的價值？</div>
                 </div>
 
                 <hr style="border:0; border-top:1px solid #eee; margin: 80px 0;">
@@ -458,6 +556,26 @@
                     
                     <div class="conclusion-box">
                         <p>面對網路上的兩極攻訐，時代力量試圖證明：在藍綠的激情對決之外，台灣政壇還需要一個「不看顏色，只看是非」的理性聲音，即便這個聲音，註定是孤獨的。</p>
+                    </div>
+                </div>
+
+                <hr style="border:0; border-top:1px solid #eee; margin: 60px 0;">
+
+                <div id="stories">
+                    <h3 style="margin-top: 40px; margin-bottom: 20px; color: #666; font-size: 18px; border:none;">點擊人物閱讀故事：</h3>
+                    
+                    <div class="netflix-container">
+                        <a href="wang.html" class="netflix-card">
+                            <img src="NF/Wang_NF.png" onerror="this.src='https://via.placeholder.com/300x450?text=Wang_NF.png'" alt="王婉諭的故事">
+                        </a>
+
+                        <a href="liao.html" class="netflix-card">
+                            <img src="NF/Liao_NF.png" onerror="this.src='https://via.placeholder.com/300x450?text=Liao_NF.png'" alt="廖啟帆的故事">
+                        </a>
+
+                        <a href="lin.html" class="netflix-card">
+                            <img src="NF/Lin_NF.png" onerror="this.src='https://via.placeholder.com/300x450?text=Lin_NF.png'" alt="林彥甫的故事">
+                        </a>
                     </div>
                 </div>
 
